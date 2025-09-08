@@ -1,0 +1,115 @@
+@model BookStore.Web.Models.Book
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="details-container">
+    <h2 class="page-title">📖 Book Details</h2>
+
+    <div class="details-card shadow">
+        <dl class="row">
+            <dt class="col-sm-3">Title</dt>
+            <dd class="col-sm-9">@Model.Title</dd>
+
+            <dt class="col-sm-3">Author</dt>
+            <dd class="col-sm-9">@Model.Author</dd>
+
+            <dt class="col-sm-3">Genre</dt>
+            <dd class="col-sm-9">@Model.Genre</dd>
+
+            <dt class="col-sm-3">ISBN</dt>
+            <dd class="col-sm-9">@Model.ISBN</dd>
+
+            <dt class="col-sm-3">Price</dt>
+            <dd class="col-sm-9">₹ @Model.Price</dd>
+
+            <dt class="col-sm-3">Stock</dt>
+            <dd class="col-sm-9">@Model.Stock</dd>
+
+            <dt class="col-sm-3">Published Date</dt>
+            <dd class="col-sm-9">@Model.PublishedDate?.ToString("yyyy-MM-dd")</dd>
+        </dl>
+
+        <div class="action-buttons">
+            <a class="btn btn-warning" asp-action="Edit" asp-route-id="@Model.Id">✏️ Edit</a>
+            <a class="btn btn-secondary" asp-action="Index">⬅️ Back</a>
+        </div>
+    </div>
+</div>
+
+<style>
+.details-container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.details-card {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #e3e3e3;
+}
+
+.details-card dt {
+    font-weight: bold;
+    color: #34495e;
+    padding: 8px 0;
+}
+
+.details-card dd {
+    margin-bottom: 12px;
+    color: #555;
+    padding: 8px 0;
+}
+
+.action-buttons {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin: 0 5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-warning {
+    background-color: #f39c12;
+    border: none;
+    color: white;
+}
+
+.btn-warning:hover {
+    background-color: #e67e22;
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background-color: #95a5a6;
+    border: none;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #7f8c8d;
+    transform: scale(1.05);
+}
+
+.shadow {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+</style>

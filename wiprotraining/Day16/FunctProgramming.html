@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functional Programming</title>
+</head>
+<body>
+    <script>
+        //First object functions
+        const sum = (a, b) => a + b;
+
+        const resultSum = sum(1, 2);
+
+        const sumAgain = (a, b, sum) => sum(a, b);
+
+        //pure functions
+        const myName = (name) => `Hello ${name}`;
+
+        myName("Leonardo") // Should always return "Hello Leonardo"
+
+        //Impure functions
+        let count = 0;
+
+        const increaseCount = (value) => count += value;
+
+        //Higher-Order Functions
+        const names = ["Leonardo", "Lucas", "Bianca", "José", "Maria", "Joe"];
+
+        const sayHiToNames = names.map(name => `Hello ${name}`);
+
+        //Composition
+
+        const splitName = (name) => name.split('_').join(' ');
+
+        const returnNameCapitalized = (name) => name.toUpperCase();
+
+        console.log(returnNameCapitalized(splitName('leonardo_maldonado')));
+
+        //DEclarative
+
+        const number = [1, 2, 3, 4, 5];
+
+       const sumNumber = (n) => n.reduce((acc, current) => acc + current);
+  
+       //Imperative
+       const numbers = [1, 2, 3, 4, 5];
+
+       const sumNumbers = (n) => {
+
+       let finalResult = 0;
+       for (let i = 0; i < n.length; i++) {
+       finalResult += n[i];
+       }
+       return finalResult;
+       }
+
+       //Immutability
+       const car = {
+       model: 'Tesla',
+       year: 2020
+       };
+
+       const newCar = car;
+       newCar.model = 'Honda';
+
+
+       const cars = {
+       model: 'Tesla',
+       year: 2020
+       }
+       const newcar = Object.assign({}, cars, {
+       model: 'Honda'
+    })
+  </script>
+</body>
+</html>

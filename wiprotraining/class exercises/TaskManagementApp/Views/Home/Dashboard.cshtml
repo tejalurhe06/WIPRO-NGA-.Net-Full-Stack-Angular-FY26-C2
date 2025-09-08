@@ -1,0 +1,32 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container">
+    <h2>Welcome to Your Dashboard</h2>
+    
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">My Tasks</h5>
+                    <p class="card-text">View and manage your personal tasks.</p>
+                    <a asp-controller="User" asp-action="TaskList" class="btn btn-primary">Go to My Tasks</a>
+                </div>
+            </div>
+        </div>
+        
+        @if (User.IsInRole("Admin"))
+        {
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Admin Panel</h5>
+                        <p class="card-text">Manage all tasks in the system.</p>
+                        <a asp-controller="Admin" asp-action="ManageTasks" class="btn btn-danger">Admin Dashboard</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

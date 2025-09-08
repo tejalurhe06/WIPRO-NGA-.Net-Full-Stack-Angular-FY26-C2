@@ -1,0 +1,81 @@
+<h1>Interpolation in Angular</h1>
+<h1>{{name}}</h1>
+<h4>{{2+2}}</h4>
+<h4>{{2*2+2}}</h4>
+<h4>{{x+y}}</h4>
+<h4>{{x==y}}</h4>
+<h1>{{user1 == user2}}</h1>
+<h3>{{'hello'.toUpperCase()}}</h3>
+<h3>{{user1.toUpperCase()}}</h3>
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<h1>Angular components</h1>
+<app-login></app-login>        
+<app-signup></app-signup>
+<h2>Hello Heading 2</h2>
+<app-login></app-login>   
+<app-login></app-login>   
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<app-profile></app-profile>
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<h1>Function call on Button click</h1>
+<button (click)="handleClickEvent()">Handleclickevent function</button>
+<button (click)="otherFunction()">other function</button>
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<h1>Define Data type in Angular</h1>
+update function 
+<button (click)="sum(10,20)">Sum</button>
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<h1>Counter App</h1>
+<div style="text-align: center">
+    <h2 class="count">{{count}}</h2>
+    <div>
+        <button (click)="handleCounter('minus')" class="btn bg-red" >Decrement</button>
+        <button (click)="handleCounter('reset')" class="btn bg-black">Reset</button>
+        <button (click)="handleCounter('plus')" class="btn bg-green">Increment</button>
+
+    </div>
+</div>
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<h1>Event In Angular</h1>
+<button class="btn" name="login" (click)="handleEvent($event)">Click Event</button>
+
+<br>
+<br>
+
+<div 
+(mouseenter)="handleEvent($event)"
+style="background-color: green;width: 100px; height: 100px;">
+
+</div>
+
+<div 
+(mouseleave)="handleEvent($event)"
+style="background-color: blue;width: 100px; height: 100px;">
+
+</div>
+
+<br>
+<br>
+
+<input type="text" 
+(focus) = "handleEvent($event)"
+(blur) = "handleEvent($event)"
+(input) = "handleEvent($event)"
+name="user">
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<h1>Get and Set Input Field Value</h1>
+<h1>User Name is : {{displayName}}</h1>
+<input type="text"  value="{{name3}}" (input)="getName($event)" placeholder="Enter user name">
+<br>
+<br>
+<button (click)="showName()" >Get Value</button>
+<button (click)="setName()" >Set Value</button>
+<hr>
+<h1>Email : {{email}}</h1>
+<input type="text" value="{{email}}"  placeholder="enter email" #emailField>
+<button (click)="getEmail(emailField.value)">Get Email</button>
+<button (click)="setEmail()">Set Email</button>
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+

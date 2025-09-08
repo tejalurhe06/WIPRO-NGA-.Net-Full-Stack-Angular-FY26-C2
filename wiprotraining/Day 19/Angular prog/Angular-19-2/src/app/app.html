@@ -1,0 +1,194 @@
+<style>
+  h2{
+    background-color: blue;
+  }
+</style>
+<h1>Style Rules and Option</h1>
+
+<h2 style="color: pink;">Heading 2 Tag</h2>
+
+<app-profile></app-profile>
+
+<br>
+<br>
+<hr>
+<br>
+<br>
+
+<h1>If Else | Control Flow</h1>
+
+<!-- @if(x==10){
+  <div style="width: 200px; height: 200px; background-color: green;"></div>
+
+} -->
+
+<button (click)="hide()">Hide Div</button>
+<button (click)="show()">Show Div</button>
+<button (click)="toggle()">Toggle Div</button>
+
+@if(display){
+  <div style="width: 200px; height: 200px; background-color: green;"></div>
+
+}
+<hr>
+<button (click)="toggleTwo()">{{togglediv?'show red div':'show gold div'}}</button>
+@if(togglediv){
+    <div style="width: 200px; height: 200px; background-color: gold;"></div>
+}
+@else{
+    <div style="width: 200px; height: 200px; background-color: red;"></div>
+
+}
+
+
+<br>
+<br>
+<hr>
+<br>
+<br>
+
+<h1>If Else | Control Flow</h1>
+
+<button (click)="handleColor(1)">Red</button>
+<button (click)="handleColor(2)">Blue</button>
+<button (click)="handleColor(3)">Green</button>
+<button (click)="handleColor(10)">Other</button>
+<input type="text" (input)="handleInput($event)" placeholder="Enter color no">
+
+@if(color==1){
+<div style="background-color: red; width: 100px; height: 100px;">
+
+</div>
+}
+@else if(color==2){
+<div style="background-color: blue; width: 100px; height: 100px;">
+
+</div>
+}
+@else if(color==3){
+<div style="background-color: greenyellow; width: 100px; height: 100px;">
+
+</div>
+} 
+@else{
+<div style="background-color: black; width: 100px; height: 100px;">
+
+</div>
+}
+
+
+<br>
+<br>
+<hr>
+<br>
+<br>
+
+<h1>Switch Case In Angular</h1>
+
+<button (click)="handleColour('red')">Red</button>
+<button (click)="handleColour('green')">Green</button>
+<button (click)="handleColour('yellow')">Yellow</button>
+<button (click)="handleColour('blue')">Blue</button>
+<button (click)="handleColour('gold')">Gold</button>
+<input type="text" placeholder="enter color" (input)="changeColour($event)">
+
+@switch(colour){
+  @case('red'){
+    <h1 style="background-color: red;">Red color</h1>
+  }
+
+  @case('green'){
+    <h1 style="background-color: green;">Green color</h1>
+  }
+
+  @case('yellow'){
+    <h1 style="background-color: yellow;">Yellow color</h1>
+  }
+
+  @case('blue'){
+    <h1 style="background-color: blue;">Blue color</h1>
+  }
+  @default{
+    <h1 style="background-color: black; color: white;">No color match</h1>
+  }
+}
+
+<br>
+<br>
+<hr>
+<br>
+<br>
+
+<h1>For loop in Angular</h1>
+<!-- <h2>{{users[0]}}</h2>
+<h2>{{users[1]}}</h2>
+<h2>{{users[2]}}</h2> -->
+
+@for(user of users;track user){
+<h6>{{user}}</h6>
+}
+<hr>
+@for(student of students;track student.name;let id=$index){
+<h4>
+  <!-- <span>{{student.name}}</span>
+  <span>{{student.age}}</span>
+  <span>{{student.email}}</span> -->
+  <span>{{id}}</span>
+  <span>{{student.name}}</span>
+  <span>{{student.email}}</span>
+  <button (click)="getName(student.name)">Get Name</button>
+</h4>
+
+<br>
+<br>
+<hr>
+<br>
+<br>
+
+<h1>Basics Of Signal</h1>
+<h4>{{count1()}}</h4>
+<h4>{{x1}}</h4>
+
+<!-- <button (click)="updateValue()">Update Value</button> -->
+
+<!-- <button (click)="updateValue('dec')">Decrement</button>
+<h4>{{count1()}}</h4>
+<button (click)="updateValue('inc')">Increment</button> -->
+
+<button (click)="count1.set(count1()-1)">Decrement</button>
+<h4>{{count1()}}</h4>
+<button (click)="count1.set(count1()+1)">Increment</button>
+
+<br>
+<br>
+<hr>
+<br>
+<br>
+
+<h1>Types with Signals</h1>
+<h4>{{data()}}</h4>
+
+<h3>{{count2()}}</h3>
+<button (click)="updateSignal()">Update</button>
+
+<br>
+<br>
+<hr>
+<br>
+<br>
+
+<h1>Computed Signals</h1>
+<h4>{{z()}}</h4>
+<button (click)="showValuee()">Show value</button>
+<button (click)="updateX()">Update X</button>
+
+<br>
+<br>
+<hr>
+<br>
+<br>
+
+<h1>Effect</h1>
+<h4>{{userName()}}</h4>
+
+}

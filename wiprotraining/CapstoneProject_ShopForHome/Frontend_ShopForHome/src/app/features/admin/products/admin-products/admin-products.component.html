@@ -1,0 +1,65 @@
+<div class="container mt-3">
+  <h3>Admin Products</h3>
+
+  <!-- Messages -->
+  <div *ngIf="message" class="alert alert-success">{{ message }}</div>
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <!-- Stats -->
+  <div *ngIf="stats" class="mb-3">
+    <strong>Total Products:</strong> {{ stats.totalProducts }} |
+    <strong>Active:</strong> {{ stats.activeProducts }} |
+    <strong>Low Stock:</strong> {{ stats.lowStockProducts }}
+  </div>
+
+  <!-- Bulk Upload -->
+  <div class="mb-3">
+    <input type="file" (change)="onFileSelected($event)" />
+    <button class="btn btn-primary btn-sm" (click)="bulkUpload()">Upload</button>
+  </div>
+
+  <!-- Update Prices -->
+  <div class="mb-3">
+    <input type="number" [(ngModel)]="percentageChange" placeholder="Price % change" />
+    <button class="btn btn-warning btn-sm" (click)="updatePrices()">Update Prices</button>
+  </div>
+
+  <!-- Products Table -->
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of products">
+        <td>{{ p.name }}</td>
+        <td>{{ p.price | currency }}</td>
+        <td>
+          <input type="number" [value]="p.stockQuantity" #stockInput />
+          <button class="btn btn-sm btn-outline-primary" (click)="updateStock(p, stockInput.value)">
+            Update
+          </button>
+        </td>
+        <td>{{ p.isActive ? 'Active' : 'Inactive' }}</td>
+        <td>
+          <button class="btn btn-sm btn-outline-secondary" (click)="toggleProduct(p)">
+            Toggle Status
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Low Stock -->
+  <div *ngIf="lowStock.length">
+    <h5>⚠️ Low Stock</h5>
+    <ul>
+      <li *ngFor="let ls of lowStock">{{ ls.name }} - {{ ls.stockQuantity }} left</li>
+    </ul>
+  </div>
+</div>

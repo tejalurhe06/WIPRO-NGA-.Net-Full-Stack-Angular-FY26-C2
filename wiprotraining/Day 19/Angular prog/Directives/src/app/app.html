@@ -1,0 +1,60 @@
+
+<h1>ngFor Directive</h1>
+
+<ul>
+  <li *ngFor="let x of students">
+    {{x}}
+  </li>
+</ul>
+
+<ul>
+  <li *ngFor = "let student of studentData">{{student.name}},{{student.age}},{{student.email}}</li>
+</ul>
+
+<br>
+<hr>
+<br>
+
+<h1>ngIf Directive</h1>
+
+<h4 *ngIf="show">Heading Tag</h4>
+
+<!-- <div *ngIf = "login; else elseBlock">
+<a href="/">logout</a>
+</div>
+<ng-template #elseBlock>
+<a href="">login</a> 
+</ng-template> -->
+
+<div *ngIf="block==0">
+  <h1>Heading 0</h1>
+</div>
+
+<div *ngIf="block==1">
+  <h1>Heading 1</h1>
+</div>
+
+<div *ngIf="block==2">
+  <h1>Heading 2</h1>
+</div>
+
+<button (click)="updateBlock()">Update Block</button>
+
+<br>
+<hr>
+<br>
+
+<h1>ngSwitch Directive</h1>
+
+<button (click)="changeColor('pink')">Pink</button>
+<button (click)="changeColor('green')">Green</button>
+<button (click)="changeColor('yellow')">Yellow</button>
+<button (click)="changeColor('black')">Black</button>
+
+<div [ngSwitch]="color">
+<h4 *ngSwitchCase="'pink'" style="background-color: pink;">Pink Color</h4>
+<h4 *ngSwitchCase="'green'" style="background-color: green;">Green Color</h4>
+<h4 *ngSwitchCase="'yellow'" style="background-color: yellow;">Yellow Color</h4>
+<h4 *ngSwitchCase="'black'" style="background-color: black;">Black Color</h4>
+<h4 *ngSwitchDefault>Black Color</h4>
+</div>

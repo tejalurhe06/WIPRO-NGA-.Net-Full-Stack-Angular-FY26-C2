@@ -1,0 +1,58 @@
+<div class="container py-4">
+  <h3 class="mb-4">❤️ My Wishlist</h3>
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="alert alert-info">Loading wishlist...</div>
+
+  <!-- Error -->
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <!-- Info -->
+  <div *ngIf="info" class="alert alert-success">{{ info }}</div>
+
+  <!-- Empty Wishlist -->
+  <div *ngIf="!loading && products.length === 0" class="text-center p-5 bg-light rounded shadow-sm">
+    <i class="bi bi-heartbreak text-danger" style="font-size: 3rem;"></i>
+    <h5 class="mt-3">Your wishlist is empty</h5>
+    <button class="btn btn-primary mt-3" (click)="browseProducts()">
+      <i class="bi bi-shop"></i> Browse Products
+    </button>
+  </div>
+
+  <!-- Wishlist Items -->
+  <div *ngIf="products.length > 0">
+    <div class="row">
+      <div class="col-md-4 mb-3" *ngFor="let product of products">
+        <div class="card h-100 shadow-sm">
+          <img [src]="getImageUrl(product.imageUrl)" alt="{{ product.name }}" class="card-img-top"
+            style="height: 200px; object-fit: cover;" />
+
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text text-muted">{{ product.description }}</p>
+            <p class="card-text fw-bold">₹{{ product.price }}</p>
+
+            <div class="mt-auto d-flex justify-content-between">
+              <!-- Add to Cart -->
+              <button class="btn btn-primary btn-sm" (click)="addToCart(product.productId)">
+                <i class="bi bi-cart-plus"></i> Add to Cart
+              </button>
+
+              <!-- Remove from Wishlist -->
+              <button class="btn btn-outline-danger btn-sm" (click)="remove(product.productId)">
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Continue Shopping (only once at bottom) -->
+    <div class="text-center mt-4">
+      <button class="btn btn-outline-primary btn-lg" (click)="browseProducts()">
+        <i class="bi bi-arrow-left-circle"></i> Continue Shopping
+      </button>
+    </div>
+  </div>
+</div>

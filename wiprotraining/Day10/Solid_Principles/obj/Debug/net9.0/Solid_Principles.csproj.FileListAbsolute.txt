@@ -1,0 +1,5 @@
+C:\Users\hp\Documents\wiprotraining\Day10\Solid_Principles\obj\Debug\net9.0\Solid_Principles.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hp\Documents\wiprotraining\Day10\Solid_Principles\obj\Debug\net9.0\Solid_Principles.AssemblyInfoInputs.cache
+C:\Users\hp\Documents\wiprotraining\Day10\Solid_Principles\obj\Debug\net9.0\Solid_Principles.AssemblyInfo.cs
+C:\Users\hp\Documents\wiprotraining\Day10\Solid_Principles\obj\Debug\net9.0\Solid_Principles.csproj.CoreCompileInputs.cache
+C:\Users\hp\Documents\wiprotraining\Day10\Solid_Principles\obj\Debug\net9.0\Solid_Principles.sourcelink.json

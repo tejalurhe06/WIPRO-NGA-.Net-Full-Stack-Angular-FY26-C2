@@ -1,0 +1,73 @@
+.dashboard-container h1 {
+  font-size: 2.5rem;       
+  font-weight: bold;     
+  color: #007BFF;            
+  text-align: center;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2); 
+  letter-spacing: 1px;       
+}
+
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f6fa;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+h1 {
+  color: #2f3640;
+  margin-bottom: 20px;
+}
+
+.product-list, .product-details, .feedbacks {
+  width: 80%;
+  margin: 15px 0;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.product-list ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.product-list li {
+  flex: 1 1 45%;
+  padding: 15px;
+  cursor: pointer;
+  border-radius: 8px;
+  background: linear-gradient(145deg, #e0e4e7, #ffffff);
+  transition: all 0.3s ease;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  font-weight: 600;
+}
+
+.product-list li:hover {
+  transform: translateY(-5px);
+  background: linear-gradient(145deg, #d1d8e0, #ffffff);
+  box-shadow: 4px 4px 12px rgba(0,0,0,0.15);
+}
+
+.feedbacks div {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-left: 4px solid #00cec9;
+  background-color: #f1f2f6;
+  border-radius: 5px;
+}
+
+.feedbacks strong {
+  color: #2d3436;
+}
+

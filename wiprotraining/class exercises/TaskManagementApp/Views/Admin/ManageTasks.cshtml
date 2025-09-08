@@ -1,0 +1,40 @@
+@model IEnumerable<TaskManagementApp.Models.TaskItem>
+
+@{
+    ViewData["Title"] = "Manage All Tasks";
+}
+
+<h2>Manage All Tasks</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>User</th>
+            <th>Created Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@Html.Raw(System.Web.HttpUtility.HtmlDecode(item.Description))</td>
+                <td>
+                    @if (item.IsCompleted)
+                    {
+                        <span class="badge bg-success">Completed</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-warning">Pending</span>
+                    }
+                </td>
+                <td>@(item.User?.Email ?? "Unknown")</td>
+                <td>@item.CreatedDate.ToString("g")</td>
+            </tr>
+        }
+    </tbody>
+</table>

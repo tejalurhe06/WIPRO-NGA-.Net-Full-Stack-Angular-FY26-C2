@@ -1,0 +1,36 @@
+.navbar {
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  .navbar-brand {
+    font-size: 1.5rem;
+    color: #fff !important;
+    transition: 0.3s;
+    &:hover {
+      color: #ffd43b !important;
+    }
+  }
+
+  .nav-link {
+    color: #fff !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+
+    &:hover {
+      color: #ffd43b !important;
+      transform: translateY(-2px);
+    }
+  }
+
+  .dropdown-menu {
+    border-radius: 0.75rem;
+  }
+
+  .cart-badge {
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    font-size: 0.75rem;
+    border-radius: 50%;
+    padding: 4px 7px;
+  }
+}

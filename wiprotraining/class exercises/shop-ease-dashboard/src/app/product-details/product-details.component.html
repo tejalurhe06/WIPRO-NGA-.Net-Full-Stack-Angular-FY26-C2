@@ -1,0 +1,14 @@
+<div class="product-details-card">
+  <h3>{{ product.name }} Details</h3>
+  <p>Price: ₹{{ product.price }}</p>
+
+  <div class="feedback-form">
+    <label>Rating (1-5):</label>
+    <input type="number" [(ngModel)]="rating" min="1" max="5" />
+
+    <label>Comment:</label>
+    <textarea [(ngModel)]="comment" placeholder="Enter your feedback"></textarea>
+
+    <button (click)="submitFeedback()">Submit Feedback</button>
+  </div>
+</div>

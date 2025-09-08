@@ -1,0 +1,17 @@
+@model OnlineBookstoreMVC.Models.Book
+@{
+    ViewData["Title"] = "Book Details";
+}
+
+<h2>@Model.Title</h2>
+
+<div class="card" style="width: 30rem;">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Title</h5>
+        <p class="card-text"><strong>Author:</strong> @Model.Author</p>
+        <p class="card-text"><strong>ISBN:</strong> @Model.ISBN</p>
+        <p class="card-text"><strong>Price:</strong> @Model.Price.ToString("C")</p>
+        <a class="btn btn-success" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.Id" asp-route-title="@Model.Title" asp-route-price="@Model.Price">Add to Cart</a>
+        <a class="btn btn-secondary" asp-action="Index">Back to List</a>
+    </div>
+</div>

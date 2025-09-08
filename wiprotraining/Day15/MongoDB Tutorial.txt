@@ -1,0 +1,2131 @@
+
+test> show dbs
+admin        40.00 KiB
+config       60.00 KiB
+local        40.00 KiB
+mydatabase  112.00 KiB
+test> use school
+switched to db school
+school> db.students.insertOne({name:"Raju",age:25})
+{
+  acknowledged: true,
+  insertedId: ObjectId('68906df79843647b27eec4a9')
+}
+school> db.students.find()
+[
+  { _id: ObjectId('68906df79843647b27eec4a9'), name: 'Raju', age: 25 }
+]
+school> use bank_db
+switched to db bank_db
+bank_db> db.createCollection("employees")
+{ ok: 1 }
+bank_db> show collections
+employees
+bank_db> db.createCollection("branches")
+{ ok: 1 }
+bank_db> show collections
+branches
+employees
+bank_db> db.branches.drop()
+true
+bank_db> show collections
+employees
+bank_db> db.dropDatabase
+[Function: dropDatabase] AsyncFunction {
+  apiVersions: [ 1, Infinity ],
+  returnsPromise: true,
+  serverVersions: [ '0.0.0', '999.999.999' ],
+  topologies: [ 'ReplSet', 'Sharded', 'LoadBalanced', 'Standalone' ],
+  returnType: { type: 'unknown', attributes: {} },
+  deprecated: false,
+  platforms: [ 'Compass', 'Browser', 'CLI' ],
+  isDirectShellCommand: false,
+  acceptsRawInput: false,
+  shellCommandCompleter: undefined,
+  newShellCommandCompleter: undefined,
+  help: [Function (anonymous)] Help
+}
+bank_db> show dbs
+admin        40.00 KiB
+bank_db       8.00 KiB
+config      108.00 KiB
+local        40.00 KiB
+mydatabase  112.00 KiB
+school       72.00 KiB
+bank_db> db.dropDatabase()
+{ ok: 1, dropped: 'bank_db' }
+bank_db> show dbs
+admin        40.00 KiB
+config      108.00 KiB
+local        40.00 KiB
+mydatabase  112.00 KiB
+school       72.00 KiB
+bank_db> use car_dealership
+switched to db car_dealership
+car_dealership> db.createCollection("cars")
+{ ok: 1 }
+car_dealership> show collections
+cars
+car_dealership> db.cars.insertOne({
+...  "maker": "Tata",
+...  "model": "Nexon",
+...  "fuel_type": "Petrol",
+...  "transmission": "Automatic",
+...  "engine": {
+...  "type": "Turbocharged",
+...  "cc": 1199,
+...  "torque": "170 Nm"
+...  },
+...  "features": [
+...  "Touchscreen",
+...  "Reverse Camera",
+...  "Bluetooth Connectivity"
+...  ],
+...  "sunroof": false,
+...  "airbags": 2
+...  })
+{
+  acknowledged: true,
+  insertedId: ObjectId('689076ae9843647b27eec4aa')
+}
+car_dealership> db.cars.insertMany(
+... [
+...  {
+...  "maker": "Hyundai",
+...  "model": "Creta",
+...  "fuel_type": "Diesel",
+...  "transmission": "Manual",
+...  "engine": {
+...  "type": "Naturally Aspirated",
+...  "cc": 1493,
+...  "torque": "250 Nm"
+...  },
+...  "features": [
+...  "Sunroof",
+...  "Leather Seats",
+...  "Wireless Charging",
+... "Ventilated Seats",
+... "Bluetooth"
+...  ],
+...  "sunroof": true,
+...  "airbags": 6
+...  },
+...  {
+...  "maker": "Maruti Suzuki",
+...  "model": "Baleno",
+...  "fuel_type": "Petrol",
+...  "transmission": "Automatic",
+...  "engine": {
+...  "type": "Naturally Aspirated",
+...  "cc": 1197,
+...  "torque": "113 Nm"
+...  },
+...  "features": [
+...  "Projector Headlamps",
+...  "Apple CarPlay",
+...  "ABS"
+...  ],
+...  "sunroof": false,
+...  "airbags": 2
+...  },
+...  {
+...  "maker": "Mahindra",
+...  "model": "XUV500",
+...  "fuel_type": "Diesel",
+...  "transmission": "Manual",
+...  "engine": {
+...  "type": "Turbocharged",
+...  "cc": 2179,
+...  "torque": "360 Nm"
+...  },
+...  "features": [
+...  "All-Wheel Drive",
+...  "Navigation System",
+...  "Cruise Control"
+...  ],
+...  "sunroof": true,
+...  "airbags": 6
+...  },
+...  {
+...  "maker": "Honda",
+...  "model": "City",
+...  "fuel_type": "Petrol",
+...  "transmission": "Automatic",
+...  "engine": {
+...  "type": "Naturally Aspirated",
+...  "cc": 1498,
+...  "torque": "145 Nm"
+...  },
+...  "features": [
+...  "Keyless Entry",
+...  "Auto AC",
+...  "Multi-angle Rearview Camera"
+...  ],
+...  "sunroof": false,
+...  "airbags": 4
+...  }
+... ]
+... )
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6890771f9843647b27eec4ab'),
+    '1': ObjectId('6890771f9843647b27eec4ac'),
+    '2': ObjectId('6890771f9843647b27eec4ad'),
+    '3': ObjectId('6890771f9843647b27eec4ae')
+  }
+}
+car_dealership> db.cars.find()
+[
+  {
+    _id: ObjectId('689076ae9843647b27eec4aa'),
+    maker: 'Tata',
+    model: 'Nexon',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Turbocharged', cc: 1199, torque: '170 Nm' },
+    features: [ 'Touchscreen', 'Reverse Camera', 'Bluetooth Connectivity' ],
+    sunroof: false,
+    airbags: 2
+  },
+  {
+    _id: ObjectId('6890771f9843647b27eec4ab'),
+    maker: 'Hyundai',
+    model: 'Creta',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Naturally Aspirated', cc: 1493, torque: '250 Nm' },
+    features: [
+      'Sunroof',
+      'Leather Seats',
+      'Wireless Charging',
+      'Ventilated Seats',
+      'Bluetooth'
+    ],
+    sunroof: true,
+    airbags: 6
+  },
+  {
+    _id: ObjectId('6890771f9843647b27eec4ac'),
+    maker: 'Maruti Suzuki',
+    model: 'Baleno',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Naturally Aspirated', cc: 1197, torque: '113 Nm' },
+    features: [ 'Projector Headlamps', 'Apple CarPlay', 'ABS' ],
+    sunroof: false,
+    airbags: 2
+  },
+  {
+    _id: ObjectId('6890771f9843647b27eec4ad'),
+    maker: 'Mahindra',
+    model: 'XUV500',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Turbocharged', cc: 2179, torque: '360 Nm' },
+    features: [ 'All-Wheel Drive', 'Navigation System', 'Cruise Control' ],
+    sunroof: true,
+    airbags: 6
+  },
+  {
+    _id: ObjectId('6890771f9843647b27eec4ae'),
+    maker: 'Honda',
+    model: 'City',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Naturally Aspirated', cc: 1498, torque: '145 Nm' },
+    features: [ 'Keyless Entry', 'Auto AC', 'Multi-angle Rearview Camera' ],
+    sunroof: false,
+    airbags: 4
+  }
+]
+car_dealership> db.cars.findOne()
+{
+  _id: ObjectId('689076ae9843647b27eec4aa'),
+  maker: 'Tata',
+  model: 'Nexon',
+  fuel_type: 'Petrol',
+  transmission: 'Automatic',
+  engine: { type: 'Turbocharged', cc: 1199, torque: '170 Nm' },
+  features: [ 'Touchscreen', 'Reverse Camera', 'Bluetooth Connectivity' ],
+  sunroof: false,
+  airbags: 2
+}
+car_dealership> db.cars.find().preety
+
+car_dealership> db.cars.find().preety()
+TypeError: db.cars.find().preety is not a function
+car_dealership> db.cars.find().pretty()
+[
+  {
+    _id: ObjectId('689076ae9843647b27eec4aa'),
+    maker: 'Tata',
+    model: 'Nexon',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Turbocharged', cc: 1199, torque: '170 Nm' },
+    features: [ 'Touchscreen', 'Reverse Camera', 'Bluetooth Connectivity' ],
+    sunroof: false,
+    airbags: 2
+  },
+  {
+    _id: ObjectId('6890771f9843647b27eec4ab'),
+    maker: 'Hyundai',
+    model: 'Creta',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Naturally Aspirated', cc: 1493, torque: '250 Nm' },
+    features: [
+      'Sunroof',
+      'Leather Seats',
+      'Wireless Charging',
+      'Ventilated Seats',
+      'Bluetooth'
+    ],
+    sunroof: true,
+    airbags: 6
+  },
+  {
+    _id: ObjectId('6890771f9843647b27eec4ac'),
+    maker: 'Maruti Suzuki',
+    model: 'Baleno',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Naturally Aspirated', cc: 1197, torque: '113 Nm' },
+    features: [ 'Projector Headlamps', 'Apple CarPlay', 'ABS' ],
+    sunroof: false,
+    airbags: 2
+  },
+  {
+    _id: ObjectId('6890771f9843647b27eec4ad'),
+    maker: 'Mahindra',
+    model: 'XUV500',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Turbocharged', cc: 2179, torque: '360 Nm' },
+    features: [ 'All-Wheel Drive', 'Navigation System', 'Cruise Control' ],
+    sunroof: true,
+    airbags: 6
+  },
+  {
+    _id: ObjectId('6890771f9843647b27eec4ae'),
+    maker: 'Honda',
+    model: 'City',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Naturally Aspirated', cc: 1498, torque: '145 Nm' },
+    features: [ 'Keyless Entry', 'Auto AC', 'Multi-angle Rearview Camera' ],
+    sunroof: false,
+    airbags: 4
+  }
+]
+car_dealership> db.cars.find({},{model:1})
+[
+  { _id: ObjectId('689076ae9843647b27eec4aa'), model: 'Nexon' },
+  { _id: ObjectId('6890771f9843647b27eec4ab'), model: 'Creta' },
+  { _id: ObjectId('6890771f9843647b27eec4ac'), model: 'Baleno' },
+  { _id: ObjectId('6890771f9843647b27eec4ad'), model: 'XUV500' },
+  { _id: ObjectId('6890771f9843647b27eec4ae'), model: 'City' }
+]
+car_dealership> db.cars.find({},{model:1,_id:0})
+[
+  { model: 'Nexon' },
+  { model: 'Creta' },
+  { model: 'Baleno' },
+  { model: 'XUV500' },
+  { model: 'City' }
+]
+car_dealership> db.cars.find({},{model:1,maker:1,_id:0})
+[
+  { maker: 'Tata', model: 'Nexon' },
+  { maker: 'Hyundai', model: 'Creta' },
+  { maker: 'Maruti Suzuki', model: 'Baleno' },
+  { maker: 'Mahindra', model: 'XUV500' },
+  { maker: 'Honda', model: 'City' }
+]
+car_dealership> db.cars.find({fuel_type:petrol})
+ReferenceError: petrol is not defined
+car_dealership> db.cars.find({fuel_type:Petrol})
+ReferenceError: Petrol is not defined
+car_dealership> db.cars.find({fuel_type:"Petrol"})
+[
+  {
+    _id: ObjectId('689076ae9843647b27eec4aa'),
+    maker: 'Tata',
+    model: 'Nexon',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Turbocharged', cc: 1199, torque: '170 Nm' },
+    features: [ 'Touchscreen', 'Reverse Camera', 'Bluetooth Connectivity' ],
+    sunroof: false,
+    airbags: 2
+  },
+  {
+    _id: ObjectId('6890771f9843647b27eec4ac'),
+    maker: 'Maruti Suzuki',
+    model: 'Baleno',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Naturally Aspirated', cc: 1197, torque: '113 Nm' },
+    features: [ 'Projector Headlamps', 'Apple CarPlay', 'ABS' ],
+    sunroof: false,
+    airbags: 2
+  },
+  {
+    _id: ObjectId('6890771f9843647b27eec4ae'),
+    maker: 'Honda',
+    model: 'City',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Naturally Aspirated', cc: 1498, torque: '145 Nm' },
+    features: [ 'Keyless Entry', 'Auto AC', 'Multi-angle Rearview Camera' ],
+    sunroof: false,
+    airbags: 4
+  }
+]
+car_dealership> db.cars.find({fuel_type:"Diesel"})
+[
+  {
+    _id: ObjectId('6890771f9843647b27eec4ab'),
+    maker: 'Hyundai',
+    model: 'Creta',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Naturally Aspirated', cc: 1493, torque: '250 Nm' },
+    features: [
+      'Sunroof',
+      'Leather Seats',
+      'Wireless Charging',
+      'Ventilated Seats',
+      'Bluetooth'
+    ],
+    sunroof: true,
+    airbags: 6
+  },
+  {
+    _id: ObjectId('6890771f9843647b27eec4ad'),
+    maker: 'Mahindra',
+    model: 'XUV500',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Turbocharged', cc: 2179, torque: '360 Nm' },
+    features: [ 'All-Wheel Drive', 'Navigation System', 'Cruise Control' ],
+    sunroof: true,
+    airbags: 6
+  }
+]
+car_dealership> db.cars.find({features:"Sunroof"})
+[
+  {
+    _id: ObjectId('6890771f9843647b27eec4ab'),
+    maker: 'Hyundai',
+    model: 'Creta',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Naturally Aspirated', cc: 1493, torque: '250 Nm' },
+    features: [
+      'Sunroof',
+      'Leather Seats',
+      'Wireless Charging',
+      'Ventilated Seats',
+      'Bluetooth'
+    ],
+    sunroof: true,
+    airbags: 6
+  }
+]
+car_dealership> db.cars.find({"engine.type":"Turbocharged"})
+[
+  {
+    _id: ObjectId('689076ae9843647b27eec4aa'),
+    maker: 'Tata',
+    model: 'Nexon',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Turbocharged', cc: 1199, torque: '170 Nm' },
+    features: [ 'Touchscreen', 'Reverse Camera', 'Bluetooth Connectivity' ],
+    sunroof: false,
+    airbags: 2
+  },
+  {
+    _id: ObjectId('6890771f9843647b27eec4ad'),
+    maker: 'Mahindra',
+    model: 'XUV500',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Turbocharged', cc: 2179, torque: '360 Nm' },
+    features: [ 'All-Wheel Drive', 'Navigation System', 'Cruise Control' ],
+    sunroof: true,
+    airbags: 6
+  }
+]
+car_dealership> db.cars.updateOne(
+... {model:"Nexon"},
+... {$set:{color:"Red"}}
+... )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+car_dealership> db.cars.find({model:"Nexon"})
+[
+  {
+    _id: ObjectId('689076ae9843647b27eec4aa'),
+    maker: 'Tata',
+    model: 'Nexon',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Turbocharged', cc: 1199, torque: '170 Nm' },
+    features: [ 'Touchscreen', 'Reverse Camera', 'Bluetooth Connectivity' ],
+    sunroof: false,
+    airbags: 2,
+    color: 'Red'
+  }
+]
+car_dealership> db.cars.updateOne( { model: "Nexon" }, { $push: { features: "Heated seats" } } )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+car_dealership> db.cars.find({model:"Nexon"})
+[
+  {
+    _id: ObjectId('689076ae9843647b27eec4aa'),
+    maker: 'Tata',
+    model: 'Nexon',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Turbocharged', cc: 1199, torque: '170 Nm' },
+    features: [
+      'Touchscreen',
+      'Reverse Camera',
+      'Bluetooth Connectivity',
+      'Heated seats'
+    ],
+    sunroof: false,
+    airbags: 2,
+    color: 'Red'
+  }
+]
+car_dealership> db.cars.updateOne( { model: "Nexon" }, { $pull: { features: "Heated seats" } } )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+car_dealership> db.cars.find({model:"Nexon"})
+[
+  {
+    _id: ObjectId('689076ae9843647b27eec4aa'),
+    maker: 'Tata',
+    model: 'Nexon',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Turbocharged', cc: 1199, torque: '170 Nm' },
+    features: [ 'Touchscreen', 'Reverse Camera', 'Bluetooth Connectivity' ],
+    sunroof: false,
+    airbags: 2,
+    color: 'Red'
+  }
+]
+car_dealership> db.cars.updateOne(
+... {fuel_type:"Diesel"},
+... {$set:{alloys:"yes"}}
+... )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+car_dealership> db.cars.updateOne( { model: "Nexon" }, { $push: { features: "Heated seats" } } )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+car_dealership> db.cars.updateMany( { fuel_type: "Diesel" }, { $set: { alloys: "yes" } } )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+car_dealership> db.cars.updateOne(
+... {model:}
+Uncaught:
+SyntaxError: Unexpected token (2:7)
+
+  1 | db.cars.updateOne(
+> 2 | {model:}
+    |        ^
+  3 |
+
+car_dealership> db.cars.updateOne( {model:}
+Uncaught:
+SyntaxError: Unexpected token (1:26)
+
+> 1 | db.cars.updateOne( {model:}
+    |                           ^
+  2 |
+
+car_dealership> db.cars.updateOne( {model:"creta"},{$set:{engine.torque:"270 Nm"}}
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:48)
+
+> 1 | db.cars.updateOne( {model:"creta"},{$set:{engine.torque:"270 Nm"}}
+    |                                                 ^
+  2 |
+
+car_dealership> db.cars.updateOne( {model:"creta"},{$set:{"engine.torque":"270 Nm"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+car_dealership> db.cars.updateOne(
+... {model:"Nexon"},
+... {$push:{features:{$each:["Wireless charging","Voice Control"]}}}
+... )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+car_dealership> db.cars.find({model:"Nexon"})
+[
+  {
+    _id: ObjectId('689076ae9843647b27eec4aa'),
+    maker: 'Tata',
+    model: 'Nexon',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Turbocharged', cc: 1199, torque: '170 Nm' },
+    features: [
+      'Touchscreen',
+      'Reverse Camera',
+      'Bluetooth Connectivity',
+      'Heated seats',
+      'Wireless charging',
+      'Voice Control'
+    ],
+    sunroof: false,
+    airbags: 2,
+    color: 'Red'
+  }
+]
+car_dealership> db.cars.updateOne(
+... {model:"Nexon"},
+... {$unset:{color:""}}
+... )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+car_dealership> db.cars.find({model:"Nexon"})
+[
+  {
+    _id: ObjectId('689076ae9843647b27eec4aa'),
+    maker: 'Tata',
+    model: 'Nexon',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Turbocharged', cc: 1199, torque: '170 Nm' },
+    features: [
+      'Touchscreen',
+      'Reverse Camera',
+      'Bluetooth Connectivity',
+      'Heated seats',
+      'Wireless charging',
+      'Voice Control'
+    ],
+    sunroof: false,
+    airbags: 2
+  }
+]
+car_dealership> db.cars.updateMany(
+... {},
+... {$set:{color:"Blue"}}
+... )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 5,
+  modifiedCount: 5,
+  upsertedCount: 0
+}
+car_dealership> db.cars.fins()
+TypeError: db.cars.fins is not a function
+car_dealership> db.cars.find()
+[
+  {
+    _id: ObjectId('689076ae9843647b27eec4aa'),
+    maker: 'Tata',
+    model: 'Nexon',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Turbocharged', cc: 1199, torque: '170 Nm' },
+    features: [
+      'Touchscreen',
+      'Reverse Camera',
+      'Bluetooth Connectivity',
+      'Heated seats',
+      'Wireless charging',
+      'Voice Control'
+    ],
+    sunroof: false,
+    airbags: 2,
+    color: 'Blue'
+  },
+  {
+    _id: ObjectId('6890771f9843647b27eec4ab'),
+    maker: 'Hyundai',
+    model: 'Creta',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Naturally Aspirated', cc: 1493, torque: '250 Nm' },
+    features: [
+      'Sunroof',
+      'Leather Seats',
+      'Wireless Charging',
+      'Ventilated Seats',
+      'Bluetooth'
+    ],
+    sunroof: true,
+    airbags: 6,
+    alloys: 'yes',
+    color: 'Blue'
+  },
+  {
+    _id: ObjectId('6890771f9843647b27eec4ac'),
+    maker: 'Maruti Suzuki',
+    model: 'Baleno',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Naturally Aspirated', cc: 1197, torque: '113 Nm' },
+    features: [ 'Projector Headlamps', 'Apple CarPlay', 'ABS' ],
+    sunroof: false,
+    airbags: 2,
+    color: 'Blue'
+  },
+  {
+    _id: ObjectId('6890771f9843647b27eec4ad'),
+    maker: 'Mahindra',
+    model: 'XUV500',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Turbocharged', cc: 2179, torque: '360 Nm' },
+    features: [ 'All-Wheel Drive', 'Navigation System', 'Cruise Control' ],
+    sunroof: true,
+    airbags: 6,
+    alloys: 'yes',
+    color: 'Blue'
+  },
+  {
+    _id: ObjectId('6890771f9843647b27eec4ae'),
+    maker: 'Honda',
+    model: 'City',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Naturally Aspirated', cc: 1498, torque: '145 Nm' },
+    features: [ 'Keyless Entry', 'Auto AC', 'Multi-angle Rearview Camera' ],
+    sunroof: false,
+    airbags: 4,
+    color: 'Blue'
+  }
+]
+car_dealership> db.cars.updateMany(
+... {model:"Venue"},
+... {$set:{Maker:"Hyundai"}},
+... {upsert:true}
+... )
+{
+  acknowledged: true,
+  insertedId: ObjectId('68908fd1db40658e95e78702'),
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 1
+}
+car_dealership> db.cars.find()
+[
+  {
+    _id: ObjectId('689076ae9843647b27eec4aa'),
+    maker: 'Tata',
+    model: 'Nexon',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Turbocharged', cc: 1199, torque: '170 Nm' },
+    features: [
+      'Touchscreen',
+      'Reverse Camera',
+      'Bluetooth Connectivity',
+      'Heated seats',
+      'Wireless charging',
+      'Voice Control'
+    ],
+    sunroof: false,
+    airbags: 2,
+    color: 'Blue'
+  },
+  {
+    _id: ObjectId('6890771f9843647b27eec4ab'),
+    maker: 'Hyundai',
+    model: 'Creta',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Naturally Aspirated', cc: 1493, torque: '250 Nm' },
+    features: [
+      'Sunroof',
+      'Leather Seats',
+      'Wireless Charging',
+      'Ventilated Seats',
+      'Bluetooth'
+    ],
+    sunroof: true,
+    airbags: 6,
+    alloys: 'yes',
+    color: 'Blue'
+  },
+  {
+    _id: ObjectId('6890771f9843647b27eec4ac'),
+    maker: 'Maruti Suzuki',
+    model: 'Baleno',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Naturally Aspirated', cc: 1197, torque: '113 Nm' },
+    features: [ 'Projector Headlamps', 'Apple CarPlay', 'ABS' ],
+    sunroof: false,
+    airbags: 2,
+    color: 'Blue'
+  },
+  {
+    _id: ObjectId('6890771f9843647b27eec4ad'),
+    maker: 'Mahindra',
+    model: 'XUV500',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Turbocharged', cc: 2179, torque: '360 Nm' },
+    features: [ 'All-Wheel Drive', 'Navigation System', 'Cruise Control' ],
+    sunroof: true,
+    airbags: 6,
+    alloys: 'yes',
+    color: 'Blue'
+  },
+  {
+    _id: ObjectId('6890771f9843647b27eec4ae'),
+    maker: 'Honda',
+    model: 'City',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Naturally Aspirated', cc: 1498, torque: '145 Nm' },
+    features: [ 'Keyless Entry', 'Auto AC', 'Multi-angle Rearview Camera' ],
+    sunroof: false,
+    airbags: 4,
+    color: 'Blue'
+  },
+  {
+    _id: ObjectId('68908fd1db40658e95e78702'),
+    model: 'Venue',
+    Maker: 'Hyundai'
+  }
+]
+car_dealership> db.cars.deleteOne({fuel_type:"Petrol"})
+{ acknowledged: true, deletedCount: 1 }
+car_dealership> db.cars.find()
+[
+  {
+    _id: ObjectId('6890771f9843647b27eec4ab'),
+    maker: 'Hyundai',
+    model: 'Creta',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Naturally Aspirated', cc: 1493, torque: '250 Nm' },
+    features: [
+      'Sunroof',
+      'Leather Seats',
+      'Wireless Charging',
+      'Ventilated Seats',
+      'Bluetooth'
+    ],
+    sunroof: true,
+    airbags: 6,
+    alloys: 'yes',
+    color: 'Blue'
+  },
+  {
+    _id: ObjectId('6890771f9843647b27eec4ac'),
+    maker: 'Maruti Suzuki',
+    model: 'Baleno',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Naturally Aspirated', cc: 1197, torque: '113 Nm' },
+    features: [ 'Projector Headlamps', 'Apple CarPlay', 'ABS' ],
+    sunroof: false,
+    airbags: 2,
+    color: 'Blue'
+  },
+  {
+    _id: ObjectId('6890771f9843647b27eec4ad'),
+    maker: 'Mahindra',
+    model: 'XUV500',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Turbocharged', cc: 2179, torque: '360 Nm' },
+    features: [ 'All-Wheel Drive', 'Navigation System', 'Cruise Control' ],
+    sunroof: true,
+    airbags: 6,
+    alloys: 'yes',
+    color: 'Blue'
+  },
+  {
+    _id: ObjectId('6890771f9843647b27eec4ae'),
+    maker: 'Honda',
+    model: 'City',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Naturally Aspirated', cc: 1498, torque: '145 Nm' },
+    features: [ 'Keyless Entry', 'Auto AC', 'Multi-angle Rearview Camera' ],
+    sunroof: false,
+    airbags: 4,
+    color: 'Blue'
+  },
+  {
+    _id: ObjectId('68908fd1db40658e95e78702'),
+    model: 'Venue',
+    Maker: 'Hyundai'
+  }
+]
+car_dealership> db.cars.deleteMany({fuel_type:"Petrol"})
+{ acknowledged: true, deletedCount: 2 }
+car_dealership> db.cars.find()
+[
+  {
+    _id: ObjectId('6890771f9843647b27eec4ab'),
+    maker: 'Hyundai',
+    model: 'Creta',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Naturally Aspirated', cc: 1493, torque: '250 Nm' },
+    features: [
+      'Sunroof',
+      'Leather Seats',
+      'Wireless Charging',
+      'Ventilated Seats',
+      'Bluetooth'
+    ],
+    sunroof: true,
+    airbags: 6,
+    alloys: 'yes',
+    color: 'Blue'
+  },
+  {
+    _id: ObjectId('6890771f9843647b27eec4ad'),
+    maker: 'Mahindra',
+    model: 'XUV500',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Turbocharged', cc: 2179, torque: '360 Nm' },
+    features: [ 'All-Wheel Drive', 'Navigation System', 'Cruise Control' ],
+    sunroof: true,
+    airbags: 6,
+    alloys: 'yes',
+    color: 'Blue'
+  },
+  {
+    _id: ObjectId('68908fd1db40658e95e78702'),
+    model: 'Venue',
+    Maker: 'Hyundai'
+  }
+]
+car_dealership> db.test.insertOne({Date:new Date()})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6890926f9843647b27eec4af')
+}
+car_dealership> db.test.find()
+[
+  {
+    _id: ObjectId('6890926f9843647b27eec4af'),
+    Date: ISODate('2025-08-04T10:58:55.745Z')
+  }
+]
+car_dealership> db.test.insertOne({TS:new Timestamp()})
+{
+  acknowledged: true,
+  insertedId: ObjectId('689092a49843647b27eec4b0')
+}
+car_dealership> db.test.find()
+[
+  {
+    _id: ObjectId('6890926f9843647b27eec4af'),
+    Date: ISODate('2025-08-04T10:58:55.745Z')
+  },
+  {
+    _id: ObjectId('689092a49843647b27eec4b0'),
+    TS: Timestamp({ t: 1754305188, i: 1 })
+  }
+]
+
+car_dealership> db.cars.find({"engine.cc":1493})
+[
+  {
+    _id: ObjectId('6890771f9843647b27eec4ab'),
+    maker: 'Hyundai',
+    model: 'Creta',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Naturally Aspirated', cc: 1493, torque: '250 Nm' },
+    features: [
+      'Sunroof',
+      'Leather Seats',
+      'Wireless Charging',
+      'Ventilated Seats',
+      'Bluetooth'
+    ],
+    sunroof: true,
+    airbags: 6,
+    alloys: 'yes',
+    color: 'Blue'
+  }
+]
+car_dealership> db.cars.find({"engine.cc":{$gt:1400}})
+[
+  {
+    _id: ObjectId('6890771f9843647b27eec4ab'),
+    maker: 'Hyundai',
+    model: 'Creta',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Naturally Aspirated', cc: 1493, torque: '250 Nm' },
+    features: [
+      'Sunroof',
+      'Leather Seats',
+      'Wireless Charging',
+      'Ventilated Seats',
+      'Bluetooth'
+    ],
+    sunroof: true,
+    airbags: 6,
+    alloys: 'yes',
+    color: 'Blue'
+  },
+  {
+    _id: ObjectId('6890771f9843647b27eec4ad'),
+    maker: 'Mahindra',
+    model: 'XUV500',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Turbocharged', cc: 2179, torque: '360 Nm' },
+    features: [ 'All-Wheel Drive', 'Navigation System', 'Cruise Control' ],
+    sunroof: true,
+    airbags: 6,
+    alloys: 'yes',
+    color: 'Blue'
+  }
+]
+car_dealership> db.cars.find({"engine.cc":{$in:[1498,2917]}})
+
+car_dealership> db.cars.find({"engine.cc":{$in:[1498,2179]}})
+[
+  {
+    _id: ObjectId('6890771f9843647b27eec4ad'),
+    maker: 'Mahindra',
+    model: 'XUV500',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Turbocharged', cc: 2179, torque: '360 Nm' },
+    features: [ 'All-Wheel Drive', 'Navigation System', 'Cruise Control' ],
+    sunroof: true,
+    airbags: 6,
+    alloys: 'yes',
+    color: 'Blue'
+  }
+]
+car_dealership> db.cars.find({"engine.cc":{$nin:[1498,2179]}})
+[
+  {
+    _id: ObjectId('6890771f9843647b27eec4ab'),
+    maker: 'Hyundai',
+    model: 'Creta',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Naturally Aspirated', cc: 1493, torque: '250 Nm' },
+    features: [
+      'Sunroof',
+      'Leather Seats',
+      'Wireless Charging',
+      'Ventilated Seats',
+      'Bluetooth'
+    ],
+    sunroof: true,
+    airbags: 6,
+    alloys: 'yes',
+    color: 'Blue'
+  },
+  {
+    _id: ObjectId('68908fd1db40658e95e78702'),
+    model: 'Venue',
+    Maker: 'Hyundai'
+  },
+  {
+    '0': {
+      maker: 'Hyundai',
+      model: 'Creta',
+      fuel_type: 'Diesel',
+      transmission: 'Manual',
+      engine: { type: 'Naturally Aspirated', cc: 1493, torque: '250 Nm' },
+      features: [
+        'Sunroof',
+        'Leather Seats',
+        'Wireless Charging',
+        'Ventilated Seats',
+        'Bluetooth'
+      ],
+      sunroof: true,
+      airbags: 6
+    },
+    '1': {
+      maker: 'Maruti Suzuki',
+      model: 'Baleno',
+      fuel_type: 'Petrol',
+      transmission: 'Automatic',
+      engine: { type: 'Naturally Aspirated', cc: 1197, torque: '113 Nm' },
+      features: [ 'Projector Headlamps', 'Apple CarPlay', 'ABS' ],
+      sunroof: false,
+      airbags: 2
+    },
+    '2': {
+      maker: 'Mahindra',
+      model: 'XUV500',
+      fuel_type: 'Diesel',
+      transmission: 'Manual',
+      engine: { type: 'Turbocharged', cc: 2179, torque: '360 Nm' },
+      features: [ 'All-Wheel Drive', 'Navigation System', 'Cruise Control' ],
+      sunroof: true,
+      airbags: 6
+    },
+    '3': {
+      maker: 'Honda',
+      model: 'City',
+      fuel_type: 'Petrol',
+      transmission: 'Automatic',
+      engine: { type: 'Naturally Aspirated', cc: 1498, torque: '145 Nm' },
+      features: [ 'Keyless Entry', 'Auto AC', 'Multi-angle Rearview Camera' ],
+      sunroof: false,
+      airbags: 4
+    },
+    _id: ObjectId('689093d09843647b27eec4b1')
+  },
+  {
+    _id: ObjectId('6890941c9843647b27eec4b2'),
+    maker: 'Tata',
+    model: 'Nexon',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Turbocharged', cc: 1199, torque: '170 Nm' },
+    features: [ 'Touchscreen', 'Reverse Camera', 'Bluetooth Connectivity' ],
+    sunroof: false,
+    airbags: 2
+  }
+]
+car_dealership> db.cars.find({$and:[{fuel_type:"Diesel"},{"engine.type":"Turbocharged"},{sunroof:"true"}]})
+
+car_dealership> db.cars.find({$or:[{fuel_type:"Diesel"},{"engine.type":"Turbocharged"}]})
+[
+  {
+    _id: ObjectId('6890771f9843647b27eec4ab'),
+    maker: 'Hyundai',
+    model: 'Creta',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Naturally Aspirated', cc: 1493, torque: '250 Nm' },
+    features: [
+      'Sunroof',
+      'Leather Seats',
+      'Wireless Charging',
+      'Ventilated Seats',
+      'Bluetooth'
+    ],
+    sunroof: true,
+    airbags: 6,
+    alloys: 'yes',
+    color: 'Blue'
+  },
+  {
+    _id: ObjectId('6890771f9843647b27eec4ad'),
+    maker: 'Mahindra',
+    model: 'XUV500',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Turbocharged', cc: 2179, torque: '360 Nm' },
+    features: [ 'All-Wheel Drive', 'Navigation System', 'Cruise Control' ],
+    sunroof: true,
+    airbags: 6,
+    alloys: 'yes',
+    color: 'Blue'
+  },
+  {
+    _id: ObjectId('6890941c9843647b27eec4b2'),
+    maker: 'Tata',
+    model: 'Nexon',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Turbocharged', cc: 1199, torque: '170 Nm' },
+    features: [ 'Touchscreen', 'Reverse Camera', 'Bluetooth Connectivity' ],
+    sunroof: false,
+    airbags: 2
+  }
+]
+car_dealership> db.cars.find({$nor:[{fuel_type:"Diesel"},{"engine.type":"Turbocharged"}]})
+[
+  {
+    _id: ObjectId('68908fd1db40658e95e78702'),
+    model: 'Venue',
+    Maker: 'Hyundai'
+  },
+  {
+    '0': {
+      maker: 'Hyundai',
+      model: 'Creta',
+      fuel_type: 'Diesel',
+      transmission: 'Manual',
+      engine: { type: 'Naturally Aspirated', cc: 1493, torque: '250 Nm' },
+      features: [
+        'Sunroof',
+        'Leather Seats',
+        'Wireless Charging',
+        'Ventilated Seats',
+        'Bluetooth'
+      ],
+      sunroof: true,
+      airbags: 6
+    },
+    '1': {
+      maker: 'Maruti Suzuki',
+      model: 'Baleno',
+      fuel_type: 'Petrol',
+      transmission: 'Automatic',
+      engine: { type: 'Naturally Aspirated', cc: 1197, torque: '113 Nm' },
+      features: [ 'Projector Headlamps', 'Apple CarPlay', 'ABS' ],
+      sunroof: false,
+      airbags: 2
+    },
+    '2': {
+      maker: 'Mahindra',
+      model: 'XUV500',
+      fuel_type: 'Diesel',
+      transmission: 'Manual',
+      engine: { type: 'Turbocharged', cc: 2179, torque: '360 Nm' },
+      features: [ 'All-Wheel Drive', 'Navigation System', 'Cruise Control' ],
+      sunroof: true,
+      airbags: 6
+    },
+    '3': {
+      maker: 'Honda',
+      model: 'City',
+      fuel_type: 'Petrol',
+      transmission: 'Automatic',
+      engine: { type: 'Naturally Aspirated', cc: 1498, torque: '145 Nm' },
+      features: [ 'Keyless Entry', 'Auto AC', 'Multi-angle Rearview Camera' ],
+      sunroof: false,
+      airbags: 4
+    },
+    _id: ObjectId('689093d09843647b27eec4b1')
+  }
+]
+car_dealership> db.cars.find({fuel_type:{$exists:true})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:38)
+
+> 1 | db.cars.find({fuel_type:{$exists:true})
+    |                                       ^
+  2 |
+
+car_dealership> db.cars.find({fuel_type:{$exists:true}})
+[
+  {
+    _id: ObjectId('6890771f9843647b27eec4ab'),
+    maker: 'Hyundai',
+    model: 'Creta',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Naturally Aspirated', cc: 1493, torque: '250 Nm' },
+    features: [
+      'Sunroof',
+      'Leather Seats',
+      'Wireless Charging',
+      'Ventilated Seats',
+      'Bluetooth'
+    ],
+    sunroof: true,
+    airbags: 6,
+    alloys: 'yes',
+    color: 'Blue'
+  },
+  {
+    _id: ObjectId('6890771f9843647b27eec4ad'),
+    maker: 'Mahindra',
+    model: 'XUV500',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Turbocharged', cc: 2179, torque: '360 Nm' },
+    features: [ 'All-Wheel Drive', 'Navigation System', 'Cruise Control' ],
+    sunroof: true,
+    airbags: 6,
+    alloys: 'yes',
+    color: 'Blue'
+  },
+  {
+    _id: ObjectId('6890941c9843647b27eec4b2'),
+    maker: 'Tata',
+    model: 'Nexon',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Turbocharged', cc: 1199, torque: '170 Nm' },
+    features: [ 'Touchscreen', 'Reverse Camera', 'Bluetooth Connectivity' ],
+    sunroof: false,
+    airbags: 2
+  }
+]
+car_dealership> db.cars.find({model:{$type:"string"}})
+[
+  {
+    _id: ObjectId('6890771f9843647b27eec4ab'),
+    maker: 'Hyundai',
+    model: 'Creta',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Naturally Aspirated', cc: 1493, torque: '250 Nm' },
+    features: [
+      'Sunroof',
+      'Leather Seats',
+      'Wireless Charging',
+      'Ventilated Seats',
+      'Bluetooth'
+    ],
+    sunroof: true,
+    airbags: 6,
+    alloys: 'yes',
+    color: 'Blue'
+  },
+  {
+    _id: ObjectId('6890771f9843647b27eec4ad'),
+    maker: 'Mahindra',
+    model: 'XUV500',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Turbocharged', cc: 2179, torque: '360 Nm' },
+    features: [ 'All-Wheel Drive', 'Navigation System', 'Cruise Control' ],
+    sunroof: true,
+    airbags: 6,
+    alloys: 'yes',
+    color: 'Blue'
+  },
+  {
+    _id: ObjectId('68908fd1db40658e95e78702'),
+    model: 'Venue',
+    Maker: 'Hyundai'
+  },
+  {
+    _id: ObjectId('6890941c9843647b27eec4b2'),
+    maker: 'Tata',
+    model: 'Nexon',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Turbocharged', cc: 1199, torque: '170 Nm' },
+    features: [ 'Touchscreen', 'Reverse Camera', 'Bluetooth Connectivity' ],
+    sunroof: false,
+    airbags: 2
+  }
+]
+car_dealership> db.cars.find({model:{$type:"int"}})
+
+car_dealership> db.cars.find({hobbies:{$size:4}})
+
+car_dealership> db.cars.find({features:{$size:4}})
+
+car_dealership> db.cars.find({features:{$size:3}})
+[
+  {
+    _id: ObjectId('6890771f9843647b27eec4ad'),
+    maker: 'Mahindra',
+    model: 'XUV500',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Turbocharged', cc: 2179, torque: '360 Nm' },
+    features: [ 'All-Wheel Drive', 'Navigation System', 'Cruise Control' ],
+    sunroof: true,
+    airbags: 6,
+    alloys: 'yes',
+    color: 'Blue'
+  },
+  {
+    _id: ObjectId('6890941c9843647b27eec4b2'),
+    maker: 'Tata',
+    model: 'Nexon',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Turbocharged', cc: 1199, torque: '170 Nm' },
+    features: [ 'Touchscreen', 'Reverse Camera', 'Bluetooth Connectivity' ],
+    sunroof: false,
+    airbags: 2
+  }
+]
+car_dealership> db.cars.find({features:{$all:"bluetooth"}})
+MongoServerError[BadValue]: $all needs an array
+car_dealership> db.cars.find({features:{$all:["bluetooth"]}})
+
+car_dealership> db.cars.find().count()
+5
+car_dealership> db.cars.find({},{_id:0,model:1})
+[
+  { model: 'Creta' },
+  { model: 'XUV500' },
+  { model: 'Venue' },
+  {},
+  { model: 'Nexon' }
+]
+car_dealership> db.cars.find({},{_id:0,model:1,maker:1}).sort({model:1})
+[
+  {},
+  { maker: 'Hyundai', model: 'Creta' },
+  { maker: 'Tata', model: 'Nexon' },
+  { model: 'Venue' },
+  { maker: 'Mahindra', model: 'XUV500' }
+]
+car_dealership> db.cars.find({},{_id:0,model:1,maker:1}).sort({model:1})-1
+NaN
+car_dealership> db.cars.find({},{_id:0,model:1,maker:1}).sort({model:1}-1)
+MongoInvalidArgumentError: Invalid sort format: null Sort must be a valid object
+car_dealership> db.cars.find({},{_id:0,model:1,maker:1}).limit(2)
+[
+  { maker: 'Hyundai', model: 'Creta' },
+  { maker: 'Mahindra', model: 'XUV500' }
+]
+car_dealership> db.cars.find({},{_id:0,model:1,maker:1}).skip(2)
+[ { model: 'Venue' }, {}, { maker: 'Tata', model: 'Nexon' } ]
+
+
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------Aggregate Functions
+
+car_dealership> db.cars.findOne()
+{
+  _id: ObjectId('6890a61d9843647b27eec4b3'),
+  maker: 'Hyundai',
+  model: 'Creta',
+  fuel_type: 'Diesel',
+  transmission: 'Manual',
+  engine: { type: 'Naturally Aspirated', cc: 1493, torque: '250 Nm' },
+  features: [
+    'Sunroof',
+    'Leather Seats',
+    'Wireless Charging',
+    'Ventilated Seats',
+    'Bluetooth'
+  ],
+  sunroof: true,
+  airbags: 6,
+  price: 1500000,
+  owners: [
+    { name: 'Raju', purchase_date: '2021-03-15', location: 'Mumbai' },
+    { name: 'Shyam', purchase_date: '2023-01-10', location: 'Delhi' }
+  ],
+  service_history: [
+    { date: '2022-04-10', service_type: 'Oil Change', cost: 5000 },
+    {
+      date: '2023-07-18',
+      service_type: 'Brake Replacement',
+      cost: 12000
+    }
+  ]
+}
+car_dealership> db.cars.aggregate([
+... {$group:{_id:"$maker"}}])
+[
+  { _id: 'Maruti Suzuki' },
+  { _id: 'Tata' },
+  { _id: 'Hyundai' },
+  { _id: 'Mahindra' },
+  { _id: 'Honda' }
+]
+car_dealership> db.cars.aggregate([ { $group: { _id: "$maker" ,TotalCars:{$sum:1}} }])
+[
+  { _id: 'Maruti Suzuki', TotalCars: 3 },
+  { _id: 'Tata', TotalCars: 3 },
+  { _id: 'Hyundai', TotalCars: 4 },
+  { _id: 'Mahindra', TotalCars: 1 },
+  { _id: 'Honda', TotalCars: 3 }
+]
+car_dealership> db.cars.aggregate([ { $group: { _id: "$maker" ,AvgPrice:{$avg:"$price"}} }])
+[
+  { _id: 'Hyundai', AvgPrice: 1475000 },
+  { _id: 'Mahindra', AvgPrice: 1800000 },
+  { _id: 'Honda', AvgPrice: 1000000 },
+  { _id: 'Maruti Suzuki', AvgPrice: 716666.6666666666 },
+  { _id: 'Tata', AvgPrice: 1500000 }
+]
+car_dealership> db.cars.aggregate([ { $group: { _id: "$fuel_type" ,TotalCars:{$sum:1}} }])
+[
+  { _id: 'Petrol', TotalCars: 6 },
+  { _id: 'Electric', TotalCars: 2 },
+  { _id: 'CNG', TotalCars: 2 },
+  { _id: 'Diesel', TotalCars: 4 }
+]
+car_dealership> db.cars.aggregate([
+... {$match:{maker:"Hyundai","engine.cc":{$gt:1200}}])
+Uncaught:
+SyntaxError: Unexpected token, expected "," (2:48)
+
+  1 | db.cars.aggregate([
+> 2 | {$match:{maker:"Hyundai","engine.cc":{$gt:1200}}])
+    |                                                 ^
+  3 |
+
+car_dealership> db.cars.aggregate([ {$match:{maker:"Hyundai","engine.cc":{$gt:1200}}}])
+[
+  {
+    _id: ObjectId('6890a61d9843647b27eec4b3'),
+    maker: 'Hyundai',
+    model: 'Creta',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Naturally Aspirated', cc: 1493, torque: '250 Nm' },
+    features: [
+      'Sunroof',
+      'Leather Seats',
+      'Wireless Charging',
+      'Ventilated Seats',
+      'Bluetooth'
+    ],
+    sunroof: true,
+    airbags: 6,
+    price: 1500000,
+    owners: [
+      { name: 'Raju', purchase_date: '2021-03-15', location: 'Mumbai' },
+      { name: 'Shyam', purchase_date: '2023-01-10', location: 'Delhi' }
+    ],
+    service_history: [
+      { date: '2022-04-10', service_type: 'Oil Change', cost: 5000 },
+      {
+        date: '2023-07-18',
+        service_type: 'Brake Replacement',
+        cost: 12000
+      }
+    ]
+  }
+]
+car_dealership> db.cars.aggregate([ {$match:{maker:"Hyundai","engine.cc":{$gt:1000}}}])
+[
+  {
+    _id: ObjectId('6890a61d9843647b27eec4b3'),
+    maker: 'Hyundai',
+    model: 'Creta',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Naturally Aspirated', cc: 1493, torque: '250 Nm' },
+    features: [
+      'Sunroof',
+      'Leather Seats',
+      'Wireless Charging',
+      'Ventilated Seats',
+      'Bluetooth'
+    ],
+    sunroof: true,
+    airbags: 6,
+    price: 1500000,
+    owners: [
+      { name: 'Raju', purchase_date: '2021-03-15', location: 'Mumbai' },
+      { name: 'Shyam', purchase_date: '2023-01-10', location: 'Delhi' }
+    ],
+    service_history: [
+      { date: '2022-04-10', service_type: 'Oil Change', cost: 5000 },
+      {
+        date: '2023-07-18',
+        service_type: 'Brake Replacement',
+        cost: 12000
+      }
+    ]
+  },
+  {
+    _id: ObjectId('6890a61d9843647b27eec4b9'),
+    maker: 'Hyundai',
+    model: 'i20',
+    fuel_type: 'Petrol',
+    transmission: 'Manual',
+    engine: { type: 'Naturally Aspirated', cc: 1197, torque: '114 Nm' },
+    features: [
+      'Apple CarPlay',
+      'ABS',
+      'Projector Headlamps',
+      'Wireless Charging'
+    ],
+    sunroof: false,
+    airbags: 2,
+    price: 900000,
+    owners: [
+      { name: 'Rohit', purchase_date: '2021-06-15', location: 'Delhi' }
+    ],
+    service_history: [
+      {
+        date: '2022-09-10',
+        service_type: 'Battery Replacement',
+        cost: 7000
+      },
+      { date: '2023-05-25', service_type: 'Tire Rotation', cost: 2500 }
+    ]
+  }
+]
+car_dealership> db.cars.aggregate([ {$match:{maker:"Hyundai"}},{$count:"Total_Cars"}])
+[ { Total_Cars: 4 } ]
+car_dealership> db.cars.aggregate([ {$match:{maker:"TATA"}},{$count:"Total_Cars"}])
+
+car_dealership> db.cars.aggregate([ {$match:{maker:"Tata"}},{$count:"Total_Cars"}])
+[ { Total_Cars: 3 } ]
+car_dealership> db.cars.aggregate([ {$match:{maker:"Hyundai"}},{$group:{_id:"$fuel_type"}}])
+[ { _id: 'Diesel' }, { _id: 'Petrol' }, { _id: 'Electric' } ]
+car_dealership> db.cars.aggregate([ {$match:{maker:"Hyundai"}},{$group:{_id:"$fuel_type",TotalCar:{$sum:1}}}])
+[
+  { _id: 'Petrol', TotalCar: 2 },
+  { _id: 'Diesel', TotalCar: 1 },
+  { _id: 'Electric', TotalCar: 1 }
+]
+car_dealership> db.cars.aggregate([ {$match:{maker:"Hyundai"}},{$project:{_id:0,maker:1,model:1,fuel_type:1}}])
+[
+  { maker: 'Hyundai', model: 'Creta', fuel_type: 'Diesel' },
+  { maker: 'Hyundai', model: 'Venue', fuel_type: 'Petrol' },
+  { maker: 'Hyundai', model: 'i20', fuel_type: 'Petrol' },
+  { maker: 'Hyundai', model: 'Kona Electric', fuel_type: 'Electric' }
+]
+car_dealership> db.cars.aggregate([ {$match:{maker:"Hyundai"}},{$project:{_id:0,maker:1,model:1,fuel_type:1}},{$sort:{model:1}}])
+[
+  { maker: 'Hyundai', model: 'Creta', fuel_type: 'Diesel' },
+  { maker: 'Hyundai', model: 'Kona Electric', fuel_type: 'Electric' },
+  { maker: 'Hyundai', model: 'Venue', fuel_type: 'Petrol' },
+  { maker: 'Hyundai', model: 'i20', fuel_type: 'Petrol' }
+]
+car_dealership> db.cars.aggregate([ {$match:{maker:"Hyundai"}},{$project:{_id:0,maker:1,model:1,fuel_type:1}},{$sort:{model:-1}}])
+[
+  { maker: 'Hyundai', model: 'i20', fuel_type: 'Petrol' },
+  { maker: 'Hyundai', model: 'Venue', fuel_type: 'Petrol' },
+  { maker: 'Hyundai', model: 'Kona Electric', fuel_type: 'Electric' },
+  { maker: 'Hyundai', model: 'Creta', fuel_type: 'Diesel' }
+]
+car_dealership> db.cars.aggregate([{#sortByCount:"$maker"}])
+Uncaught:
+SyntaxError: Unexpected private name. (1:20)
+
+> 1 | db.cars.aggregate([{#sortByCount:"$maker"}])
+    |                     ^
+  2 |
+
+car_dealership> db.cars.aggregate([{$sortByCount:"$maker"}])
+[
+  { _id: 'Hyundai', count: 4 },
+  { _id: 'Maruti Suzuki', count: 3 },
+  { _id: 'Tata', count: 3 },
+  { _id: 'Honda', count: 3 },
+  { _id: 'Mahindra', count: 1 }
+]
+car_dealership> db.cars.findOne()
+{
+  _id: ObjectId('6890a61d9843647b27eec4b3'),
+  maker: 'Hyundai',
+  model: 'Creta',
+  fuel_type: 'Diesel',
+  transmission: 'Manual',
+  engine: { type: 'Naturally Aspirated', cc: 1493, torque: '250 Nm' },
+  features: [
+    'Sunroof',
+    'Leather Seats',
+    'Wireless Charging',
+    'Ventilated Seats',
+    'Bluetooth'
+  ],
+  sunroof: true,
+  airbags: 6,
+  price: 1500000,
+  owners: [
+    { name: 'Raju', purchase_date: '2021-03-15', location: 'Mumbai' },
+    { name: 'Shyam', purchase_date: '2023-01-10', location: 'Delhi' }
+  ],
+  service_history: [
+    { date: '2022-04-10', service_type: 'Oil Change', cost: 5000 },
+    {
+      date: '2023-07-18',
+      service_type: 'Brake Replacement',
+      cost: 12000
+    }
+  ]
+}
+car_dealership> db.cars.aggregate([{$unwin:"$owners"}])
+MongoServerError[Location40324]: Unrecognized pipeline stage name: '$unwin'
+car_dealership> db.cars.aggregate([{$unwind:"$owners"}])
+[
+  {
+    _id: ObjectId('6890a61d9843647b27eec4b3'),
+    maker: 'Hyundai',
+    model: 'Creta',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Naturally Aspirated', cc: 1493, torque: '250 Nm' },
+    features: [
+      'Sunroof',
+      'Leather Seats',
+      'Wireless Charging',
+      'Ventilated Seats',
+      'Bluetooth'
+    ],
+    sunroof: true,
+    airbags: 6,
+    price: 1500000,
+    owners: { name: 'Raju', purchase_date: '2021-03-15', location: 'Mumbai' },
+    service_history: [
+      { date: '2022-04-10', service_type: 'Oil Change', cost: 5000 },
+      {
+        date: '2023-07-18',
+        service_type: 'Brake Replacement',
+        cost: 12000
+      }
+    ]
+  },
+  {
+    _id: ObjectId('6890a61d9843647b27eec4b3'),
+    maker: 'Hyundai',
+    model: 'Creta',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Naturally Aspirated', cc: 1493, torque: '250 Nm' },
+    features: [
+      'Sunroof',
+      'Leather Seats',
+      'Wireless Charging',
+      'Ventilated Seats',
+      'Bluetooth'
+    ],
+    sunroof: true,
+    airbags: 6,
+    price: 1500000,
+    owners: { name: 'Shyam', purchase_date: '2023-01-10', location: 'Delhi' },
+    service_history: [
+      { date: '2022-04-10', service_type: 'Oil Change', cost: 5000 },
+      {
+        date: '2023-07-18',
+        service_type: 'Brake Replacement',
+        cost: 12000
+      }
+    ]
+  },
+  {
+    _id: ObjectId('6890a61d9843647b27eec4b4'),
+    maker: 'Maruti Suzuki',
+    model: 'Baleno',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Naturally Aspirated', cc: 1197, torque: '113 Nm' },
+    features: [ 'Projector Headlamps', 'Apple CarPlay', 'ABS' ],
+    sunroof: false,
+    airbags: 2,
+    price: 800000,
+    owners: { name: 'Baburao', purchase_date: '2020-08-22', location: 'Pune' },
+    service_history: [
+      { date: '2021-05-12', service_type: 'Tire Rotation', cost: 2000 },
+      {
+        date: '2022-11-05',
+        service_type: 'Battery Replacement',
+        cost: 7000
+      }
+    ]
+  },
+  {
+    _id: ObjectId('6890a61d9843647b27eec4b5'),
+    maker: 'Mahindra',
+    model: 'XUV500',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Turbocharged', cc: 2179, torque: '360 Nm' },
+    features: [ 'All-Wheel Drive', 'Navigation System', 'Cruise Control' ],
+    sunroof: true,
+    airbags: 6,
+    price: 1800000,
+    owners: {
+      name: 'Raju',
+      purchase_date: '2019-11-30',
+      location: 'Bangalore'
+    },
+    service_history: [
+      {
+        date: '2021-02-25',
+        service_type: 'Transmission Repair',
+        cost: 35000
+      },
+      {
+        date: '2023-03-10',
+        service_type: 'Tire Replacement',
+        cost: 15000
+      }
+    ]
+  },
+  {
+    _id: ObjectId('6890a61d9843647b27eec4b5'),
+    maker: 'Mahindra',
+    model: 'XUV500',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Turbocharged', cc: 2179, torque: '360 Nm' },
+    features: [ 'All-Wheel Drive', 'Navigation System', 'Cruise Control' ],
+    sunroof: true,
+    airbags: 6,
+    price: 1800000,
+    owners: {
+      name: 'Shyam',
+      purchase_date: '2022-02-15',
+      location: 'Hyderabad'
+    },
+    service_history: [
+      {
+        date: '2021-02-25',
+        service_type: 'Transmission Repair',
+        cost: 35000
+      },
+      {
+        date: '2023-03-10',
+        service_type: 'Tire Replacement',
+        cost: 15000
+      }
+    ]
+  },
+  {
+    _id: ObjectId('6890a61d9843647b27eec4b6'),
+    maker: 'Honda',
+    model: 'City',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Naturally Aspirated', cc: 1498, torque: '145 Nm' },
+    features: [ 'Keyless Entry', 'Auto AC', 'Multi-angle Rearview Camera' ],
+    sunroof: false,
+    airbags: 4,
+    price: 1200000,
+    owners: {
+      name: 'Baburao',
+      purchase_date: '2020-05-20',
+      location: 'Chennai'
+    },
+    service_history: [
+      { date: '2021-08-10', service_type: 'Oil Change', cost: 5000 },
+      {
+        date: '2022-10-25',
+        service_type: 'Brake Replacement',
+        cost: 10000
+      }
+    ]
+  },
+  {
+    _id: ObjectId('6890a61d9843647b27eec4b7'),
+    maker: 'Tata',
+    model: 'Nexon',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Turbocharged', cc: 1199, torque: '170 Nm' },
+    features: [ 'Touchscreen', 'Reverse Camera', 'Bluetooth Connectivity' ],
+    sunroof: false,
+    airbags: 2,
+    price: 1100000,
+    owners: { name: 'Raju', purchase_date: '2021-12-05', location: 'Kolkata' },
+    service_history: [
+      { date: '2022-12-01', service_type: 'Oil Change', cost: 6000 },
+      { date: '2023-06-15', service_type: 'Tire Rotation', cost: 3000 }
+    ]
+  },
+  {
+    _id: ObjectId('6890a61d9843647b27eec4b8'),
+    maker: 'Hyundai',
+    model: 'Venue',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Turbocharged', cc: 998, torque: '172 Nm' },
+    features: [
+      'Sunroof',
+      'Touchscreen Infotainment',
+      'Keyless Entry',
+      'Rear Camera',
+      'Cruise Control'
+    ],
+    sunroof: true,
+    airbags: 4,
+    price: 1200000,
+    owners: {
+      name: 'Amit',
+      purchase_date: '2020-05-20',
+      location: 'Bangalore'
+    },
+    service_history: [
+      { date: '2021-07-15', service_type: 'Oil Change', cost: 4000 },
+      {
+        date: '2023-03-22',
+        service_type: 'Tire Replacement',
+        cost: 8000
+      }
+    ]
+  },
+  {
+    _id: ObjectId('6890a61d9843647b27eec4b8'),
+    maker: 'Hyundai',
+    model: 'Venue',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Turbocharged', cc: 998, torque: '172 Nm' },
+    features: [
+      'Sunroof',
+      'Touchscreen Infotainment',
+      'Keyless Entry',
+      'Rear Camera',
+      'Cruise Control'
+    ],
+    sunroof: true,
+    airbags: 4,
+    price: 1200000,
+    owners: { name: 'Priya', purchase_date: '2022-11-05', location: 'Chennai' },
+    service_history: [
+      { date: '2021-07-15', service_type: 'Oil Change', cost: 4000 },
+      {
+        date: '2023-03-22',
+        service_type: 'Tire Replacement',
+        cost: 8000
+      }
+    ]
+  },
+  {
+    _id: ObjectId('6890a61d9843647b27eec4b9'),
+    maker: 'Hyundai',
+    model: 'i20',
+    fuel_type: 'Petrol',
+    transmission: 'Manual',
+    engine: { type: 'Naturally Aspirated', cc: 1197, torque: '114 Nm' },
+    features: [
+      'Apple CarPlay',
+      'ABS',
+      'Projector Headlamps',
+      'Wireless Charging'
+    ],
+    sunroof: false,
+    airbags: 2,
+    price: 900000,
+    owners: { name: 'Rohit', purchase_date: '2021-06-15', location: 'Delhi' },
+    service_history: [
+      {
+        date: '2022-09-10',
+        service_type: 'Battery Replacement',
+        cost: 7000
+      },
+      { date: '2023-05-25', service_type: 'Tire Rotation', cost: 2500 }
+    ]
+  },
+  {
+    _id: ObjectId('6890a61d9843647b27eec4ba'),
+    maker: 'Maruti Suzuki',
+    model: 'Swift',
+    fuel_type: 'Petrol',
+    transmission: 'Manual',
+    engine: { type: 'Naturally Aspirated', cc: 1198, torque: '113 Nm' },
+    features: [
+      'Touchscreen Infotainment',
+      'ABS',
+      'Keyless Entry',
+      'Rear Parking Sensors'
+    ],
+    sunroof: false,
+    airbags: 2,
+    price: 750000,
+    owners: {
+      name: 'Vijay',
+      purchase_date: '2019-03-20',
+      location: 'Hyderabad'
+    },
+    service_history: [
+      { date: '2020-05-18', service_type: 'Oil Change', cost: 3000 },
+      {
+        date: '2022-08-10',
+        service_type: 'Brake Replacement',
+        cost: 5000
+      }
+    ]
+  },
+  {
+    _id: ObjectId('6890a61d9843647b27eec4bb'),
+    maker: 'Tata',
+    model: 'Harrier',
+    fuel_type: 'Diesel',
+    transmission: 'Automatic',
+    engine: { type: 'Turbocharged', cc: 1956, torque: '350 Nm' },
+    features: [
+      'Panoramic Sunroof',
+      'Leather Upholstery',
+      'Terrain Response System',
+      'Auto-Dimming IRVM'
+    ],
+    sunroof: true,
+    airbags: 6,
+    price: 2000000,
+    owners: { name: 'Deepak', purchase_date: '2022-01-10', location: 'Mumbai' },
+    service_history: [
+      {
+        date: '2022-10-15',
+        service_type: 'Transmission Repair',
+        cost: 45000
+      },
+      {
+        date: '2023-04-20',
+        service_type: 'Brake Replacement',
+        cost: 15000
+      }
+    ]
+  },
+  {
+    _id: ObjectId('6890a61d9843647b27eec4bc'),
+    maker: 'Honda',
+    model: 'Amaze',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Naturally Aspirated', cc: 1498, torque: '200 Nm' },
+    features: [
+      'Keyless Entry',
+      'Auto AC',
+      'Rear Parking Camera',
+      'Cruise Control'
+    ],
+    sunroof: false,
+    airbags: 4,
+    price: 1000000,
+    owners: { name: 'Anil', purchase_date: '2020-11-25', location: 'Kolkata' },
+    service_history: [
+      { date: '2021-12-10', service_type: 'Oil Change', cost: 4500 },
+      { date: '2022-08-15', service_type: 'Tire Rotation', cost: 2500 }
+    ]
+  },
+  {
+    _id: ObjectId('6890a61d9843647b27eec4bd'),
+    maker: 'Tata',
+    model: 'Nexon EV',
+    fuel_type: 'Electric',
+    transmission: 'Automatic',
+    engine: {
+      type: 'Electric Motor',
+      battery_capacity: '30.2 kWh',
+      torque: '245 Nm'
+    },
+    features: [
+      'Touchscreen Infotainment',
+      'Wireless Charging',
+      'Connected Car Tech',
+      'Sunroof'
+    ],
+    sunroof: true,
+    airbags: 6,
+    price: 1400000,
+    owners: {
+      name: 'Vikas',
+      purchase_date: '2021-05-20',
+      location: 'Bangalore'
+    },
+    service_history: [
+      { date: '2022-06-10', service_type: 'Battery Check', cost: 0 },
+      { date: '2023-03-15', service_type: 'Tire Rotation', cost: 3000 }
+    ]
+  },
+  {
+    _id: ObjectId('6890a61d9843647b27eec4be'),
+    maker: 'Hyundai',
+    model: 'Kona Electric',
+    fuel_type: 'Electric',
+    transmission: 'Automatic',
+    engine: {
+      type: 'Electric Motor',
+      battery_capacity: '39.2 kWh',
+      torque: '395 Nm'
+    },
+    features: [ 'Wireless Charging', 'Ventilated Seats', 'Sunroof', 'Auto AC' ],
+    sunroof: true,
+    airbags: 6,
+    price: 2300000,
+    owners: { name: 'Sneha', purchase_date: '2022-01-15', location: 'Mumbai' },
+    service_history: [
+      { date: '2022-09-10', service_type: 'Battery Check', cost: 0 },
+      {
+        date: '2023-06-05',
+        service_type: 'Brake Replacement',
+        cost: 8000
+      }
+    ]
+  },
+  {
+    _id: ObjectId('6890a61d9843647b27eec4bf'),
+    maker: 'Maruti Suzuki',
+    model: 'WagonR',
+    fuel_type: 'CNG',
+    transmission: 'Manual',
+    engine: { type: 'Naturally Aspirated', cc: 998, torque: '90 Nm' },
+    features: [ 'Manual AC', 'ABS', 'Power Windows' ],
+    sunroof: false,
+    airbags: 2,
+    price: 600000,
+    owners: { name: 'Rahul', purchase_date: '2019-07-22', location: 'Delhi' },
+    service_history: [
+      {
+        date: '2020-11-10',
+        service_type: 'CNG Kit Checkup',
+        cost: 2000
+      },
+      { date: '2021-08-15', service_type: 'Tire Rotation', cost: 1500 }
+    ]
+  },
+  {
+    _id: ObjectId('6890a61d9843647b27eec4c0'),
+    maker: 'Honda',
+    model: 'Amaze',
+    fuel_type: 'CNG',
+    transmission: 'Manual',
+    engine: { type: 'Naturally Aspirated', cc: 1199, torque: '110 Nm' },
+    features: [
+      'Keyless Entry',
+      'Auto AC',
+      'Rear Parking Camera',
+      'Cruise Control'
+    ],
+    sunroof: false,
+    airbags: 4,
+    price: 800000,
+    owners: { name: 'Sanjay', purchase_date: '2021-03-18', location: 'Pune' },
+    service_history: [
+      {
+        date: '2021-09-10',
+        service_type: 'CNG Kit Checkup',
+        cost: 2500
+      },
+      { date: '2022-05-15', service_type: 'Oil Change', cost: 3500 }
+    ]
+  }
+]
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+String operators

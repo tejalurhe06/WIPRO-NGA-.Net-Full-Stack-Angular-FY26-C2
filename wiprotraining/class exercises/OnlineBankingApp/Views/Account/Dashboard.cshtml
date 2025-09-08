@@ -1,0 +1,50 @@
+@{
+    ViewData["Title"] = "Customer Dashboard";
+    var userName = HttpContext.Session.GetString("UserRole") ?? "Customer";
+}
+
+<h2>Welcome, @userName!</h2>
+
+<h3>Your Accounts</h3>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Account ID</th>
+        <th>Balance</th>
+    </tr>
+    <tr>
+        <td>101</td>
+        <td>$5000</td>
+    </tr>
+    <tr>
+        <td>102</td>
+        <td>$2500</td>
+    </tr>
+</table>
+
+<h3>Recent Transactions</h3>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Transaction ID</th>
+        <th>Account ID</th>
+        <th>Type</th>
+        <th>Amount</th>
+        <th>Date</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>101</td>
+        <td>Deposit</td>
+        <td>$1000</td>
+        <td>2025-08-23</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>102</td>
+        <td>Withdrawal</td>
+        <td>$500</td>
+        <td>2025-08-22</td>
+    </tr>
+</table>
+
+<br/>
+<a href="/Home/Logout">Logout</a>

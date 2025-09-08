@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration form Validations</title>
+</head>
+<body>
+    <h2>Registration Form with Validations</h2>
+
+<form>
+  <!-- Required text with min and max length -->
+  <label for="username">Username:</label>
+  <input type="text" id="username" name="username" required minlength="4" maxlength="12">
+  <small>(4–12 characters required)</small><br><br>
+
+  <!-- Email validation with pattern -->
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required
+         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+  <small>(example: abc@xyz.com)</small><br><br>
+
+  <!-- URL field -->
+  <label for="website">Website:</label>
+  <input type="url" id="website" name="website"
+         placeholder="https://example.com"><br><br>
+
+  <!-- Telephone with pattern -->
+  <label for="phone">Phone:</label>
+  <input type="tel" id="phone" name="phone" required
+         pattern="[0-9]{10}" maxlength="10">
+  <small>(10-digit number only)</small><br><br>
+
+  <!-- Password with complex pattern -->
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password" required
+         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,}">
+  <small>(Min 8 chars, must include uppercase, lowercase, digit, symbol)</small><br><br>
+
+  <!-- Number with min, max, and step -->
+  <label for="salary">Expected Salary (₹):</label>
+  <input type="number" id="salary" name="salary" required min="10000" max="1000000" step="500"><br><br>
+
+  <!-- Date with min and max -->
+  <label for="joining">Joining Date:</label>
+  <input type="date" id="joining" name="joining" required min="2025-01-01" max="2026-12-31"><br><br>
+
+  <!-- Dropdown with required -->
+  <label for="city">City:</label>
+  <select id="city" name="city" required>
+    <option value="">--Select City--</option>
+    <option value="Mumbai">Mumbai</option>
+    <option value="Pune">Pune</option>
+    <option value="Nagpur">Nagpur</option>
+  </select><br><br>
+
+  <!-- Radio buttons -->
+  <label>Gender:</label>
+  <input type="radio" name="gender" value="Male" required> Male
+  <input type="radio" name="gender" value="Female" required> Female<br><br>
+
+  <!-- Checkbox -->
+  <input type="checkbox" id="terms" name="terms" required>
+  <label for="terms">I agree to the terms and conditions</label><br><br>
+
+  <!-- Readonly field -->
+  <label for="country">Country:</label>
+  <input type="text" id="country" value="India" readonly><br><br>
+
+  <!-- Disabled field -->
+  <label for="code">Referral Code:</label>
+  <input type="text" id="code" placeholder="Disabled" disabled><br><br>
+
+  <!-- Autocomplete off -->
+  <label for="secret">Secret Note:</label>
+  <input type="text" id="secret" autocomplete="off"><br><br>
+
+  <!-- Submit Button -->
+  <input type="submit" value="Register">
+</form>
+</body>
+</html>

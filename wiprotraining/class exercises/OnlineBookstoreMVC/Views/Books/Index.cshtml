@@ -1,0 +1,42 @@
+@model IEnumerable<OnlineBookstoreMVC.Models.Book>
+@{
+    ViewData["Title"] = "Books List";
+}
+<h2>Books</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>ISBN</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var book in Model)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>@book.ISBN</td>
+                <td>@book.Price.ToString("C")</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" asp-action="Details" asp-route-id="@book.Id">View</a>
+                    @if(User.IsInRole("Admin"))
+                    {
+                        <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@book.Id">Edit</a>
+                        <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@book.Id">Delete</a>
+                    }
+                    <a class="btn btn-success btn-sm" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@book.Id" asp-route-title="@book.Title" asp-route-price="@book.Price">Add to Cart</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if(User.IsInRole("Admin"))
+{
+    <a class="btn btn-primary" asp-action="Create">Add New Book</a>
+}

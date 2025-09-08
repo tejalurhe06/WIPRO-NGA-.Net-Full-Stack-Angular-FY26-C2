@@ -1,0 +1,8 @@
+Get output by : 
+
+
+https://localhost:5001/Products/Electronics/101
+https://localhost:5001/Users/tejal/Orders
+https://localhost:5001/Dashboard
+https://localhost:5001/Orders/3fa85f64-5717-4562-b3fc-2c963f66afa6
+https://localhost:5001/Orders/123

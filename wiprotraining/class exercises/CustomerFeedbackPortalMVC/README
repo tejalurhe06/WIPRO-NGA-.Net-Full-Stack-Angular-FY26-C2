@@ -1,0 +1,34 @@
+# Customer Feedback Portal
+
+## Features Implemented
+
+### Feedback Form
+- Input fields: Name, Email, Rating, Comments  
+- Submit button with validation  
+- Uses **TagHelpers** for form, input, and anchor elements  
+
+### Custom TagHelper – Rating Stars
+- Visual star rating widget  
+- Displays number of stars based on user rating  
+
+### Custom HTML Helper
+- Generates styled input fields with placeholders and CSS classes  
+
+### Feedback List
+- Displays all submitted feedback in a table  
+- Shows rating visually using the **Rating TagHelper**  
+
+### Styling
+- CSS applied for clean, user-friendly layout  
+- `.form-control`, `.btn`, `.rating-stars`, `.custom-input` used  
+
+---
+
+## Running the Project
+1. Open terminal in the project folder  
+2. Run the project:
+```bash
+dotnet run
+2. Open browser and navigate to:
+https://localhost:5001/Feedback/Index
+

@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Angular 19 Basics",
+    "price": 499,
+    "description": "Learn Angular 19 with standalone components, directives, and pipes.",
+    "pubDate": "2025-01-01"
+  },
+  {
+    "id": 2,
+    "title": "Advanced Angular",
+    "price": 799,
+    "description": "Deep dive into Observables, HTTP, interceptors, and component communication.",
+    "pubDate": "2025-03-01"
+  }
+]

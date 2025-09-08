@@ -1,0 +1,6 @@
+@SecureDatabaseApp_HostAddress = http://localhost:5141
+
+GET {{SecureDatabaseApp_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

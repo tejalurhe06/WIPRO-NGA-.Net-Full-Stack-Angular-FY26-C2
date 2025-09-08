@@ -1,0 +1,45 @@
+@model Ecommerce_Website.Models.Order
+
+@{
+    ViewData["Title"] = "Bill";
+}
+
+<div class="container my-5">
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white text-center">
+            <h2>Bill</h2>
+        </div>
+        <div class="card-body">
+            <p><strong>User:</strong> @Model.Username</p>
+            <p><strong>Date:</strong> @DateTime.Now.ToString("dd MMM yyyy HH:mm")</p>
+
+            <table class="table table-bordered table-striped text-center mt-4">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var item in Model.Items)
+                    {
+                        <tr>
+                            <td>@item.Product?.Name</td>
+                            <td>@item.Quantity</td>
+                            <td>Rs. @item.Product?.Price</td>
+                            <td>Rs. @(item.Product?.Price * item.Quantity)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <h4 class="text-end me-3 mt-3">Grand Total: Rs. @Model.TotalAmount</h4>
+        </div>
+        <div class="card-footer text-center">
+            <a href="/Home/Index" class="btn btn-success me-2">Continue Shopping</a>
+            <a href="/Cart/Index" class="btn btn-secondary">View Cart</a>
+        </div>
+    </div>
+</div>

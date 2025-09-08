@@ -1,0 +1,25 @@
+<h3>Manual Subscribe</h3>
+<ul>
+  <li *ngFor="let book of booksManual">
+    <strong>{{ book.title }}</strong> - ₹{{ book.price }}  
+    <br>
+    Published on: {{ book.publicationDate }}  
+    <br>
+    Discount: {{ book.discount }}%  
+    <br>
+    <em>{{ book.description }}</em>
+  </li>
+</ul>
+
+<h3>Async Pipe</h3>
+<ul>
+  <li *ngFor="let book of booksAsync$ | async">
+    <strong>{{ book.title }}</strong> - ₹{{ book.price }}  
+    <br>
+    Published on: {{ book.publicationDate }}  
+    <br>
+    Discount: {{ book.discount }}%  
+    <br>
+    <em>{{ book.description }}</em>
+  </li>
+</ul>

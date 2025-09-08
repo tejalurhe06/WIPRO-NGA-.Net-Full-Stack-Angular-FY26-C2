@@ -1,0 +1,32 @@
+<div class="container mt-4">
+  <h2>Your Orders</h2>
+
+  <div *ngIf="loading">Loading...</div>
+
+  <div *ngIf="!loading && orders.length === 0" class="alert alert-info">
+    You don’t have any orders yet.
+  </div>
+
+  <table *ngIf="orders.length > 0" class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Total</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let o of orders">
+        <td>{{ o.orderId }}</td>
+        <td>{{ o.orderDate | date: 'medium' }}</td>
+        <td>{{ o.status }}</td>
+        <td>{{ o.totalAmount | currency }}</td>
+        <td>
+          <a [routerLink]="['/orders', o.orderId]" class="btn btn-sm btn-primary">View</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

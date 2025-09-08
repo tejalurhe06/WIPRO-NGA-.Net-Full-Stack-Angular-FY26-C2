@@ -1,0 +1,24 @@
+.app-container {
+  background: linear-gradient(135deg, #f0f9ff, #d6eaff);
+  min-height: 100vh;
+  padding: 30px;
+}
+
+h1 {
+  font-size: 2.8rem;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+footer {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  border-top: 1px solid #ddd;
+  padding-top: 15px;
+}

@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Task Management App</h1>
+    <p>Manage your tasks efficiently and securely.</p>
+    
+    @if (User.Identity?.IsAuthenticated != true)
+    {
+        <div class="mt-4">
+            <a class="btn btn-primary me-2" asp-controller="Account" asp-action="Register">Register</a>
+            <a class="btn btn-outline-primary" asp-controller="Account" asp-action="Login">Login</a>
+        </div>
+    }
+    else
+    {
+        <div class="mt-4">
+            <a class="btn btn-success" asp-controller="Home" asp-action="Dashboard">Go to Dashboard</a>
+        </div>
+    }
+</div>

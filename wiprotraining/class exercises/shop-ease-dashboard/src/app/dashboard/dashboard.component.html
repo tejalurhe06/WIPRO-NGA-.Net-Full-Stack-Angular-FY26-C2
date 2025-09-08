@@ -1,0 +1,31 @@
+<div class="dashboard-container">
+  <h1>ShopEase Dashboard</h1>
+
+  <div class="product-list">
+    <h2>Products</h2>
+    <ul>
+      <li *ngFor="let product of products" (click)="selectProduct(product)">
+        {{ product.name }} - ₹{{ product.price }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="product-details">
+    <app-product-details
+      *ngIf="selectedProduct"
+      [product]="selectedProduct"
+      (feedback)="receiveFeedback($event)">
+    </app-product-details>
+  </div>
+
+  <div class="feedbacks">
+    <h2>All Feedbacks</h2>
+    <div *ngFor="let product of products">
+      <div *ngIf="getFeedback(product.id)">
+        <strong>{{ product.name }}:</strong>
+        Rating: {{ getFeedback(product.id)?.rating }},
+        Comment: "{{ getFeedback(product.id)?.comment }}"
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="container mt-4" *ngIf="!loading && product; else loadingTpl">
+  <div class="row">
+    <!-- Product Image -->
+    <div class="col-md-6 text-center">
+      <img [src]="getImageUrl(product.imageUrl)" alt="{{ product.name }}" />
+
+    </div>
+
+    <!-- Product Info -->
+    <div class="col-md-6">
+      <h2>{{ product.name }}</h2>
+      <p class="text-muted">{{ product.description }}</p>
+
+      <h4 class="text-success">₹{{ product.price }}</h4>
+
+      <p>
+        <strong>Stock:</strong>
+        <span [ngClass]="{ 'text-success': product.stockQuantity > 0, 'text-danger': product.stockQuantity === 0 }">
+          {{ product.stockQuantity > 0 ? product.stockQuantity + ' available' : 'Out of Stock' }}
+        </span>
+      </p>
+
+      <p *ngIf="product.averageRating">
+        <strong>Rating:</strong> ⭐ {{ product.averageRating }}
+      </p>
+
+      <div class="d-flex gap-2 mt-3">
+        <button class="btn btn-primary"
+                [disabled]="product.stockQuantity === 0"
+                (click)="addToCart(product.productId)">
+          Add to Cart
+        </button>
+
+        <a routerLink="/products" class="btn btn-outline-secondary">
+          ← Continue Shopping
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<a routerLink="/products" class="btn btn-secondary mt-3">← Back to Products</a>
+
+
+<!-- Loading / Error Template -->
+<ng-template #loadingTpl>
+  <div class="text-center py-5">
+    <div class="spinner-border text-primary"></div>
+    <p class="mt-2">Loading product details...</p>
+  </div>
+</ng-template>

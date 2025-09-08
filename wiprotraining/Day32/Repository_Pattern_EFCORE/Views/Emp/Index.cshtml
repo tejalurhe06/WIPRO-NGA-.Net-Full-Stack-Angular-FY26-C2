@@ -1,0 +1,32 @@
+@model IEnumerable<RepositoryPatternEFCore.Models.Emp>
+
+<h1>Employee List</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Email Id</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.EmpId</td>
+                <td>@emp.EmpName</td>
+                <td>@emp.Address</td>
+                <td>@emp.Email</td>
+                <td>
+                    <a asp-action="EditEmployee" asp-route-id="@emp.EmpId">Edit</a> |
+                    <a asp-action="DeleteEmployee" asp-route-id="@emp.EmpId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table> 
+
+

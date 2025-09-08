@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // let myMap = new Map();
+    // let anotherMap = new Map([
+    // ['name', 'GFG'],
+    // ['age', 30],
+    // ['city', 'Noida']
+    // ]);
+    // console.log(anotherMap);
+
+
+
+// Create a new Map
+const myMap = new Map();
+
+// 1. set(key, value)
+myMap.set('name', 'GFG');
+myMap.set('age', 25);
+myMap.set(1, 'One'); 
+
+console.log(myMap);
+
+
+// 2. get(key)
+console.log(myMap.get('name')); 
+console.log(myMap.get('age')); 
+console.log(myMap.get(1)); 
+console.log(myMap.get('invalidKey')); 
+
+// 3. has(key)
+console.log(myMap.has('name'));
+console.log(myMap.has('address')); 
+console.log(myMap.has(1)); 
+
+// 4. delete(key)
+myMap.delete('age');
+console.log(myMap.has('age')); 
+console.log(myMap);
+
+// 5. clear()
+myMap.clear();
+console.log(myMap); // Output: Map {}
+
+console.log(myMap.size); 
+
+myMap.set('a', 1)
+
+</script>
+</body>
+</html>

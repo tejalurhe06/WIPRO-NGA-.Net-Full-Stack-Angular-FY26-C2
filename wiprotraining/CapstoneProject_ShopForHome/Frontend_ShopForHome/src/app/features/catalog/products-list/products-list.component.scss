@@ -1,0 +1,12 @@
+.order-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+
+  .card {
+    max-width: 500px;
+    width: 100%;
+    border-radius: 1rem;
+  }
+}

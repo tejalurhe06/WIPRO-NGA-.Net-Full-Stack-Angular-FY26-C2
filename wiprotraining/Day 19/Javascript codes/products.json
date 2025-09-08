@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Hammer",
+        "description": "A claw hammer",
+        "price": 120,
+        "rtsing": {
+            "min": 2,
+            "max": 5
+        }
+
+    },
+    {
+        "name": "Vide game controller",
+        "description": "A video game controller",
+        "price": 15000
+    }
+]

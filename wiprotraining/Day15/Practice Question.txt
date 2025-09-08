@@ -1,0 +1,236 @@
+Microsoft Windows [Version 10.0.22631.5189]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\hp>mongosh
+Current Mongosh Log ID: 68931aa65931c04d49eec4a8
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.5.6
+Using MongoDB:          8.0.12
+Using Mongosh:          2.5.6
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2025-08-04T09:37:24.730+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use onlineRetail
+switched to db onlineRetail
+
+onlineRetail> db.createCollection("products")
+{ ok: 1 }
+
+onlineRetail> db.createCollection("orders")
+{ ok: 1 }
+
+onlineRetail> db.createCollection("users")
+{ ok: 1 }
+
+onlineRetail> db.products.insertMany([
+...   {
+...     name: "Apple MacBook Pro 14",
+...     category: "Laptops",
+...     price: 1999.99,
+...     stock: 30,
+...     description: "14-inch Apple MacBook Pro M1",
+...     attributes: {
+...       color: "Silver",
+...       storage: "512GB SSD",
+...       ram: "16GB"
+...     },
+...     createdAt: new Date(),
+...     updatedAt: new Date()
+...   },
+...   {
+...     name: "Levi's Men's Jeans",
+...     category: "Clothing",
+...     price: 49.99,
+...     stock: 200,
+...     description: "Regular fit denim jeans",
+...     attributes: {
+...       size: "32",
+...       color: "Blue",
+...       material: "Denim"
+...     },
+...     createdAt: new Date(),
+...     updatedAt: new Date()
+...   }
+... ])
+...
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('68931b175931c04d49eec4a9'),
+    '1': ObjectId('68931b175931c04d49eec4aa')
+  }
+}
+
+onlineRetail> db.users.insertOne({
+...   username: "tejal_123",
+...   email: "tejal@example.com",
+...   passwordHash: "$2b$10$AbCdEfGhIjKlMnOpQrStUvWxYz", // (use bcrypt to hash in real apps)
+...   createdAt: new Date(),
+...   lastLogin: new Date(),
+...   role: "customer"
+... })
+...
+{
+  acknowledged: true,
+  insertedId: ObjectId('68931b245931c04d49eec4ab')
+}
+
+onlineRetail> const userId = db.users.findOne({ username: "tejal_123" })._id;
+... const product1 = db.products.findOne({ name: "Apple MacBook Pro 14" });
+... const product2 = db.products.findOne({ name: "Levi's Men's Jeans" });
+...
+... db.orders.insertOne({
+...   userId: userId,
+...   orderDate: new Date("2025-08-01T10:30:00Z"),
+...   status: "Shipped",
+...   items: [
+...     {
+...       productId: product1._id,
+...       name: product1.name,
+...       quantity: 1,
+...       price: product1.price
+...     },
+...     {
+...       productId: product2._id,
+...       name: product2.name,
+...       quantity: 2,
+...       price: product2.price
+...     }
+...   ],
+...   totalAmount: product1.price + 2 * product2.price,
+...   shippingAddress: {
+...     street: "123 Main Street",
+...     city: "Mumbai",
+...     pincode: "400001",
+...     country: "India"
+...   },
+...   paymentStatus: "Paid",
+...   createdAt: new Date(),
+...   updatedAt: new Date()
+... })
+...
+{
+  acknowledged: true,
+  insertedId: ObjectId('68931b325931c04d49eec4ac')
+}
+
+onlineRetail> db.products.createIndex({ category: 1 })
+category_1
+
+onlineRetail> db.products.createIndex({ name: "text" })
+name_text
+
+onlineRetail> db.orders.createIndex({ userId: 1 })
+userId_1
+
+onlineRetail> db.users.createIndex({ email: 1 }, { unique: true })
+email_1
+
+onlineRetail> db.products.find({ category: "Laptops" })
+[
+  {
+    _id: ObjectId('68931b175931c04d49eec4a9'),
+    name: 'Apple MacBook Pro 14',
+    category: 'Laptops',
+    price: 1999.99,
+    stock: 30,
+    description: '14-inch Apple MacBook Pro M1',
+    attributes: { color: 'Silver', storage: '512GB SSD', ram: '16GB' },
+    createdAt: ISODate('2025-08-06T09:06:31.899Z'),
+    updatedAt: ISODate('2025-08-06T09:06:31.899Z')
+  }
+]
+
+onlineRetail> db.products.find({ $text: { $search: "MacBook" } })
+[
+  {
+    _id: ObjectId('68931b175931c04d49eec4a9'),
+    name: 'Apple MacBook Pro 14',
+    category: 'Laptops',
+    price: 1999.99,
+    stock: 30,
+    description: '14-inch Apple MacBook Pro M1',
+    attributes: { color: 'Silver', storage: '512GB SSD', ram: '16GB' },
+    createdAt: ISODate('2025-08-06T09:06:31.899Z'),
+    updatedAt: ISODate('2025-08-06T09:06:31.899Z')
+  }
+]
+
+onlineRetail> const user = db.users.findOne({ username: "tejal_123" });
+... db.orders.find({ userId: user._id })
+...
+[
+  {
+    _id: ObjectId('68931b325931c04d49eec4ac'),
+    userId: ObjectId('68931b245931c04d49eec4ab'),
+    orderDate: ISODate('2025-08-01T10:30:00.000Z'),
+    status: 'Shipped',
+    items: [
+      {
+        productId: ObjectId('68931b175931c04d49eec4a9'),
+        name: 'Apple MacBook Pro 14',
+        quantity: 1,
+        price: 1999.99
+      },
+      {
+        productId: ObjectId('68931b175931c04d49eec4aa'),
+        name: "Levi's Men's Jeans",
+        quantity: 2,
+        price: 49.99
+      }
+    ],
+    totalAmount: 2099.97,
+    shippingAddress: {
+      street: '123 Main Street',
+      city: 'Mumbai',
+      pincode: '400001',
+      country: 'India'
+    },
+    paymentStatus: 'Paid',
+    createdAt: ISODate('2025-08-06T09:06:58.946Z'),
+    updatedAt: ISODate('2025-08-06T09:06:58.946Z')
+  }
+]
+
+onlineRetail> db.orders.find({
+...   orderDate: { $gte: new Date(new Date().setDate(new Date().getDate() - 30)) }
+... })
+...
+[
+  {
+    _id: ObjectId('68931b325931c04d49eec4ac'),
+    userId: ObjectId('68931b245931c04d49eec4ab'),
+    orderDate: ISODate('2025-08-01T10:30:00.000Z'),
+    status: 'Shipped',
+    items: [
+      {
+        productId: ObjectId('68931b175931c04d49eec4a9'),
+        name: 'Apple MacBook Pro 14',
+        quantity: 1,
+        price: 1999.99
+      },
+      {
+        productId: ObjectId('68931b175931c04d49eec4aa'),
+        name: "Levi's Men's Jeans",
+        quantity: 2,
+        price: 49.99
+      }
+    ],
+    totalAmount: 2099.97,
+    shippingAddress: {
+      street: '123 Main Street',
+      city: 'Mumbai',
+      pincode: '400001',
+      country: 'India'
+    },
+    paymentStatus: 'Paid',
+    createdAt: ISODate('2025-08-06T09:06:58.946Z'),
+    updatedAt: ISODate('2025-08-06T09:06:58.946Z')
+  }
+]
+
+onlineRetail>

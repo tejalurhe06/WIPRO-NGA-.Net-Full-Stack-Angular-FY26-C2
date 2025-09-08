@@ -1,0 +1,6 @@
+https://localhost:7228/Bank/Index
+https://localhost:7228/Account/FakeLogin?user=tejal
+https://localhost:7228/Admin/Index
+https://localhost:7228/Bank/Throw
+https://localhost:7228/Admin/Throw
+https://localhost:7228/Account/Logout

@@ -1,0 +1,11 @@
+@model RepositoryPatternEFCore.Models.Emp
+
+<h1>Delete Employee</h1>
+
+<form asp-action="DeleteEmployee" method="post">
+    <input type="hidden" asp-for="EmpId" />
+    <p>Are you sure you want to delete this employee?</p>
+
+    <button type="submit">Delete</button>
+    <a asp-action="Index">Cancel</a>
+</form>

@@ -1,0 +1,8 @@
+dotnet run
+https://localhost:7228/
+https://localhost:7228/Product/Index
+https://localhost:7228/Account/FakeLogin?user=tejal
+https://localhost:7228/Product/Index
+https://localhost:7228/Account/Logout
+https://localhost:7228/Product/Index
+https://localhost:7228/Product/Throw

@@ -1,0 +1,12 @@
+<h1>Pass data to child component</h1>
+
+<!-- <app-user user="Tejal Urhe"></app-user> -->
+ <!-- <app-user [user]="userName"></app-user> -->
+
+  <app-user [user]="userName" city="Pune"></app-user>
+
+ <select #selecteduser (change)="onUserChange(selecteduser.value)">
+  <option value="Tejal">Tejal</option>
+  <option value="Kanishka">Kanuu</option>
+  <option value="Anshu">Anshu</option>
+ </select>

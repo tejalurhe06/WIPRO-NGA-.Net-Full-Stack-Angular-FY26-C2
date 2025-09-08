@@ -1,0 +1,112 @@
+<!-- footer.component.html -->
+<footer class="footer bg-dark text-white mt-5">
+  <div class="container py-5">
+    <div class="row">
+      <!-- Brand Section -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="footer-brand">
+          <h4 class="fw-bold mb-3">🏠 ShopForHome</h4>
+          <p class="text-light opacity-75 mb-4">
+            Your one-stop destination for quality home products. We bring style and comfort to your doorstep with the best prices and service.
+          </p>
+          <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-lg-2 col-md-6 mb-4">
+        <h6 class="fw-bold mb-3 text-uppercase small">Shopping</h6>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a routerLink="/products" class="footer-link">All Products</a></li>
+          <li class="mb-2"><a routerLink="/products" [queryParams]="{category: 'furniture'}" class="footer-link">Furniture</a></li>
+          <li class="mb-2"><a routerLink="/products" [queryParams]="{category: 'decor'}" class="footer-link">Home Decor</a></li>
+          <li class="mb-2"><a routerLink="/products" [queryParams]="{category: 'kitchen'}" class="footer-link">Kitchen</a></li>
+          <li class="mb-2"><a routerLink="/products" [queryParams]="{category: 'lighting'}" class="footer-link">Lighting</a></li>
+        </ul>
+      </div>
+
+      <!-- Customer Support -->
+      <div class="col-lg-3 col-md-6 mb-4">
+        <h6 class="fw-bold mb-3 text-uppercase small">Support</h6>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="#" class="footer-link">Contact Us</a></li>
+          <li class="mb-2"><a href="#" class="footer-link">FAQs</a></li>
+          <li class="mb-2"><a href="#" class="footer-link">Shipping Info</a></li>
+          <li class="mb-2"><a href="#" class="footer-link">Returns & Exchanges</a></li>
+          <li class="mb-2"><a href="#" class="footer-link">Track Order</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter & Contact -->
+      <div class="col-lg-3 col-md-6 mb-4">
+        <h6 class="fw-bold mb-3 text-uppercase small">Stay in the Loop</h6>
+        <p class="text-light opacity-75 small mb-3">
+          Subscribe to get special offers, free giveaways, and new product alerts
+        </p>
+        <form class="newsletter-form">
+          <div class="input-group mb-3">
+            <input 
+              type="email" 
+              class="form-control form-control-sm" 
+              placeholder="Your email address" 
+              aria-label="Email"
+            >
+            <button class="btn btn-warning btn-sm" type="submit">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+        </form>
+        
+        <div class="contact-info mt-4">
+          <div class="d-flex align-items-center mb-2">
+            <i class="fas fa-phone-alt me-2 text-warning small"></i>
+            <span class="small">+1 (555) 123-4567</span>
+          </div>
+          <div class="d-flex align-items-center mb-2">
+            <i class="fas fa-envelope me-2 text-warning small"></i>
+            <span class="small">support&#64;shopforhome.com</span>
+          </div>
+          <div class="d-flex align-items-center">
+            <i class="fas fa-map-marker-alt me-2 text-warning small"></i>
+            <span class="small">123 Home Street, Comfort City</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment Methods & Bottom Bar -->
+    <div class="border-top border-secondary pt-4">
+      <div class="row align-items-center">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <div class="payment-methods">
+            <span class="me-2 small text-light opacity-75">We accept:</span>
+            <i class="fab fa-cc-visa payment-icon"></i>
+            <i class="fab fa-cc-mastercard payment-icon"></i>
+            <i class="fab fa-cc-amex payment-icon"></i>
+            <i class="fab fa-cc-paypal payment-icon"></i>
+            <i class="fab fa-cc-apple-pay payment-icon"></i>
+          </div>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <div class="footer-bottom-links">
+            <a href="#" class="small text-light opacity-75 me-3">Privacy Policy</a>
+            <a href="#" class="small text-light opacity-75 me-3">Terms of Service</a>
+            <a href="#" class="small text-light opacity-75">Cookie Policy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="text-center pt-3">
+      <p class="small text-light opacity-50 mb-0">
+        © {{currentYear}} ShopForHome. All rights reserved. Designed with ❤️ for your home.
+      </p>
+    </div>
+  </div>
+</footer>

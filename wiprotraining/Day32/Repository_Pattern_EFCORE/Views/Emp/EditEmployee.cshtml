@@ -1,0 +1,20 @@
+@model RepositoryPatternEFCore.Models.Emp
+
+<h1>Edit Employee</h1>
+
+<form asp-action="EditEmployee" method="post">
+    <input type="hidden" asp-for="EmpId" />
+    <div>
+        <label asp-for="EmpName"></label>
+        <input asp-for="EmpName" />
+    </div>
+    <div>
+        <label asp-for="Address"></label>
+        <input asp-for="Address" />
+    </div>
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" />
+    </div>
+    <button type="submit">Save</button>
+</form>

@@ -1,0 +1,21 @@
+<h2>Student List</h2>
+<a routerLink="/add-student">Add Student</a>
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Course</th>
+    <th>Actions</th>
+  </tr>
+  <tr *ngFor="let student of students">
+    <td>{{student.id}}</td>
+    <td>{{student.name}}</td>
+    <td>{{student.age}}</td>
+    <td>{{student.course}}</td>
+    <td>
+      <button (click)="editStudent(student.id)">Edit</button>
+      <button (click)="deleteStudent(student.id)">Delete</button>
+    </td>
+  </tr>
+</table>

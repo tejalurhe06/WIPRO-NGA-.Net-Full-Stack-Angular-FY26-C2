@@ -1,0 +1,20 @@
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="login-container">
+    <div class="login-card">
+        <h2 class="text-center mb-4">Welcome Back</h2>
+        <form asp-action="Login" method="post">
+            <div class="form-group mb-3">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
+            </div>
+            <div class="form-group text-center mb-3">
+                <button type="submit" class="btn btn-primary w-100">Login</button>
+            </div>
+        </form>

@@ -1,0 +1,30 @@
+# Registration and Validation System (ASP.NET Core MVC)
+
+## Features Implemented
+- **Registration Form**
+  - Input fields: Username, Email, Password, Confirm Password
+  - Submit button with server-side & client-side validation
+- **Validation**
+  - Required field validation
+  - Email format check
+  - Password length check (min 6 characters)
+  - Confirm Password must match Password
+  - Error messages displayed in red (`.text-danger`)
+- **Success Message**
+  - Displays confirmation when registration is successful
+- **Styling**
+  - Uses Bootstrap classes for clean layout
+  - `.form-control`, `.btn`, `.text-danger`, `.alert-success`
+
+## How to Run
+1. Clone or download this project.
+2. Open the project in **VS CODE** (or any IDE with .NET 8 support).
+3. Restore dependencies and build the project.
+4. Run the project using:
+   ```bash
+   dotnet run
+Open your browser and navigate to:
+
+arduino
+Copy code
+https://localhost:5001/Registration/Index

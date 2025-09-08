@@ -1,0 +1,31 @@
+@model CustomerFeedbackPortalMVC.Models.Feedback
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<h2>Customer Feedback Form</h2>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+
+<form asp-action="Submit" method="post">
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="Rating"></label>
+        <input asp-for="Rating" type="number" min="1" max="5" class="form-control"/>
+    </div>
+    <div>
+        <label asp-for="Comments"></label>
+        <textarea asp-for="Comments" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<a asp-action="FeedbackList">View All Feedback</a>

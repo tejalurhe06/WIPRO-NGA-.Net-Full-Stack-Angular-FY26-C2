@@ -1,0 +1,4 @@
+https://localhost:5001/Products/Electronics/101
+https://localhost:5001/Checkout
+https://localhost:5001/Products/Filter/Electronics/100-500
+https://localhost:5001/Products/Filter/Electronics/abc

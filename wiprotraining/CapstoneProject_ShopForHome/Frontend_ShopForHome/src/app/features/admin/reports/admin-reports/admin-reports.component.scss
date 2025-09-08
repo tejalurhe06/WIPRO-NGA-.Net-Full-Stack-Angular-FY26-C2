@@ -1,0 +1,68 @@
+.admin-reports-container {
+  padding: 1rem;
+  
+  .card {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    
+    h6 {
+      color: #4e73df;
+      font-weight: 600;
+    }
+  }
+  
+  .list-group-item {
+    border-left: none;
+    border-right: none;
+    
+    &:first-child {
+      border-top: none;
+    }
+    
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  
+  .table {
+    font-size: 0.85rem;
+    
+    th {
+      border-top: none;
+      font-weight: 600;
+      color: #4e73df;
+    }
+    
+    td {
+      vertical-align: middle;
+    }
+  }
+  
+  .form-label {
+    font-weight: 500;
+  }
+  
+  .btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+  }
+  
+  .bg-light {
+    background-color: #f8f9fa !important;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .admin-reports-container {
+    padding: 0.5rem;
+    
+    .d-flex.gap-2 {
+      flex-direction: column;
+      
+      .flex-grow-1 {
+        width: 100%;
+      }
+    }
+  }
+}

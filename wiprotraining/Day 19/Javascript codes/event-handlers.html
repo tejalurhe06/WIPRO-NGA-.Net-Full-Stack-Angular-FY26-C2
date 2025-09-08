@@ -1,0 +1,55 @@
+//types of events---load(window-eg,button click,images,scripts)
+//click(buttons,div,p)
+//keyboards(input--keyup,keydown)
+//mouseover-events(any elements)
+//submit(form)
+//onclick,doubleclick,etc ------special occurances
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="para1">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro soluta error quae accusamus ad aspernatur sed itaque blanditiis. Doloribus ratione nisi sapiente tempore quaerat, porro distinctio optio labore ipsum! Voluptate?
+    </p>
+
+    <!-- <button onclick="handleClick()">
+        click me
+    </button> -->
+
+    <button>
+        click me
+    </button>
+
+    <script>
+        window.onload = function()
+        {
+            alert('This page has loaded');
+        };
+
+        function handleClick()
+        {
+            alert('I was clicked');
+        }
+
+        document.querySelector('button').onclick = handleClick();
+
+        // document.getElementById('para1').onmouseover = function()
+        // {
+        //     console.log("mouse over is para")
+        // };
+
+        document.getElementById('para1').addEventListener('mouseover' , function()
+        {
+            console.log("mouse over is para")
+        });
+
+
+
+    </script>
+</body>
+</html>

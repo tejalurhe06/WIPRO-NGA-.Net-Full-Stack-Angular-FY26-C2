@@ -1,0 +1,10 @@
+<h1>Student marks</h1>
+
+@for(stud of students;track stud.id){
+    <div>
+        <p>Id:{{stud.id}},Marks:{{stud.marks}}</p>
+    </div>
+}
+@empty{
+    <div>No students found.</div>
+}

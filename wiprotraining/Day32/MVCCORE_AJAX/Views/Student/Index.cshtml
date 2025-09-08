@@ -1,0 +1,174 @@
+@model MVCCORE_AJAX.Models.Student
+@{
+    ViewData["Title"] = "Student Management";
+}
+
+<div class="col-md-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Enter Student Details</h3>
+        </div>
+        <div class="panel-body">
+            <div class="form-group col-md-5">
+                <label>Student Name</label>
+                <input type="text" id="StudentName" class="form-control" placeholder="Enter Student Name" required />
+            </div>
+            <div class="form-group col-md-5">
+                <label>Student Address</label>
+                <input type="text" id="StudentAddress" class="form-control" placeholder="Enter Student Address" required />
+            </div>
+            <div class="form-group col-md-1">
+                <input class="btn btn-primary" id="btnSave" value="Save" type="button" />
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    <table id="tblStudent" class="table table-bordered table-striped table-responsive table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Student Name</th>
+                <th>Student Address</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<!-- Edit Modal -->
+<div id="editModal" class="modal" style="display:none;">
+    <div class="modal-content" style="padding:20px; background:#fff; border-radius:8px;">
+        <h3>Edit Student</h3>
+        <input type="hidden" id="EditId" />
+        <div>
+            <label>Name</label>
+            <input type="text" id="EditName" class="form-control" />
+        </div>
+        <div>
+            <label>Address</label>
+            <input type="text" id="EditAddress" class="form-control" />
+        </div>
+        <br />
+        <button id="btnUpdate" class="btn btn-primary">Update</button>
+        <button onclick="closeModal()" class="btn btn-secondary">Cancel</button>
+    </div>
+</div>
+
+@section Scripts{
+<script>
+$(document).ready(function () {
+    LoadData();
+
+    // Create student
+    $("#btnSave").click(function () {
+        var student = {
+            Name: $("#StudentName").val(),
+            Address: $("#StudentAddress").val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: '/Student/CreateStudent',
+            contentType: "application/json",
+            data: JSON.stringify(student),
+            success: function (res) {
+                alert(res.Message);
+                if(res.Message === "SUCCESS") {
+                    $("#StudentName").val('');
+                    $("#StudentAddress").val('');
+                    LoadData();
+                }
+            }
+        });
+    });
+
+    // Update student
+    $("#btnUpdate").click(function () {
+        var student = {
+            Id: $("#EditId").val(),
+            Name: $("#EditName").val(),
+            Address: $("#EditAddress").val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: '/Student/EditStudent',
+            contentType: "application/json",
+            data: JSON.stringify(student),
+            success: function (res) {
+                alert(res.Message);
+                if(res.Message === "UPDATED") {
+                    closeModal();
+                    LoadData();
+                }
+            }
+        });
+    });
+});
+
+// Load all students
+function LoadData() {
+    $("#tblStudent tbody").empty();
+    $.ajax({
+        type: "GET",
+        url: '/Student/GetStudents',
+        dataType: "json",
+        success: function (res) {
+            $.each(res.Data, function (i, student) {
+                var row = "<tr>" +
+                    "<td>" + student.id + "</td>" +
+                    "<td>" + student.name + "</td>" +
+                    "<td>" + student.address + "</td>" +
+                    "<td>" +
+                    "<a href='javascript:void(0)' onclick='editStudent(" + student.id + ")'>Edit</a> | " +
+                    "<a href='javascript:void(0)' onclick='deleteStudent(" + student.id + ")'>Delete</a>" +
+                    "</td></tr>";
+                $("#tblStudent tbody").append(row);
+            });
+        },
+        error: function () { alert("Error loading data"); }
+    });
+}
+
+
+// Edit modal open
+function editStudent(id) {
+    $.ajax({
+        type: "GET",
+        url: '/Student/GetStudents',
+        dataType: "json",
+        success: function (res) {
+            var student = res.Data.find(x => x.Id === id);
+            if (student) {
+                $("#EditId").val(student.Id);
+                $("#EditName").val(student.Name);
+                $("#EditAddress").val(student.Address);
+                $("#editModal").show();
+            }
+        }
+    });
+}
+
+// Delete student
+function deleteStudent(id) {
+    if (confirm("Are you sure you want to delete this student?")) {
+        $.ajax({
+            type: "POST",
+            url: '/Student/DeleteStudent',
+            contentType: "application/json",
+            data: JSON.stringify(id),
+            success: function (res) {
+                alert(res.Message);
+                if(res.Message === "DELETED") LoadData();
+            }
+        });
+    }
+}
+
+function closeModal() {
+    $("#editModal").hide();
+}
+</script>
+}

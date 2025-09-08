@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button>Click me</button>
+    <a href="https://www.google.com "> Google search page </a>
+    <script>
+
+        //event-handler context ----this which return on which tag the event is fired
+        document.querySelector('button').addEventListener('click',function(){
+            console.log(this);
+        })
+
+        //event object -------catches extra enfo about the event
+        document.querySelector('button').addEventListener('click',function(event){
+           if(!confirm('Are you sure you want leave by my default web page')){
+            console.log(event);
+           }
+        })
+
+        document.querySelector('a').addEventListener('click',function(event)
+    {
+        event.preventDefault();
+    })
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+@model IEnumerable<TaskManagementApp.Models.TaskItem>
+
+@{
+    ViewData["Title"] = "My Tasks";
+}
+
+<h2>My Tasks</h2>
+
+<p>
+    <a asp-action="CreateTask" class="btn btn-success">Create New Task</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Created Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@Html.Raw(System.Web.HttpUtility.HtmlDecode(item.Description))</td>
+                <td>
+                    @if (item.IsCompleted)
+                    {
+                        <span class="badge bg-success">Completed</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-warning">Pending</span>
+                    }
+                </td>
+                <td>@item.CreatedDate.ToString("g")</td>
+                <td>
+                    <a asp-action="EditTask" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,43 @@
+<div class="orders-container">
+  <h2>📦 Manage Orders</h2>
+
+  <div *ngIf="loading">⏳ Loading orders...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <div *ngIf="success" class="success">{{ success }}</div>
+
+  <table *ngIf="!loading && orders.length > 0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>Total</th>
+        <th>Status</th>
+        <th>Change Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let o of orders">
+        <td>#{{ o.orderId }}</td>
+        <td>{{ o.orderDate | date: "short" }}</td>
+        <td>₹{{ o.orderTotal }}</td>
+        <td>{{ o.orderStatus }}</td>
+        <td>
+          <select [(ngModel)]="o.newStatus">
+            <option value="Pending">Pending</option>
+            <option value="Processing">Processing</option>
+            <option value="Completed">Completed</option>
+            <option value="Cancelled">Cancelled</option>
+          </select>
+        </td>
+        <td>
+          <button (click)="update(o)">Update</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading && orders.length === 0">
+    🚫 No orders found.
+  </div>
+</div>

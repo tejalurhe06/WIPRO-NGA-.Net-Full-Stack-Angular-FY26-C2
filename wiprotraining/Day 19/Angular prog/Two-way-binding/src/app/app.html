@@ -1,0 +1,24 @@
+<h1>Two Way Binding</h1>
+
+<!-- <input [(ngModel)]="name" type="text" placeholder="enter name">
+
+<h4>{{name}}</h4> -->
+
+<input type="text"(input)="changeName($event)" placeholder="enter name">
+<h4>{{name}}</h4>
+
+<br>
+<br>
+<hr>
+<br>
+<br>
+
+<!-- <h1 style="background-color:yellowgreen;">Dynamic Styling</h1> -->
+
+<h1
+ [style.backgroundColor] = "color"
+ [style.fontSize.px] = "fontSize"
+ >Dynamic Styling</h1>
+
+ 
+

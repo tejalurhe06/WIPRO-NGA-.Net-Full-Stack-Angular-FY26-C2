@@ -1,0 +1,54 @@
+<!-- dashboard.component.html -->
+<div class="container-fluid mt-4">
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-3 col-lg-2 bg-light sidebar">
+      <div class="position-sticky pt-3">
+        <h5 class="text-center mb-4">Admin Panel</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/admin" routerLinkActive="active" 
+               [routerLinkActiveOptions]="{exact: true}">
+              <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/admin/products" routerLinkActive="active">
+              <i class="fas fa-box me-2"></i>Products
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/admin/orders" routerLinkActive="active">
+              <i class="fas fa-shopping-cart me-2"></i>Orders
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/admin/users" routerLinkActive="active">
+              <i class="fas fa-users me-2"></i>Users
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/admin/coupons" routerLinkActive="active">
+              <i class="fas fa-ticket-alt me-2"></i>Coupons
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/admin/reports" routerLinkActive="active">
+              <i class="fas fa-chart-bar me-2"></i>Reports
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/admin/upload-csv" routerLinkActive="active">
+              <i class="fas fa-upload me-2"></i>Bulk Upload
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="col-md-9 col-lg-10 ms-sm-auto px-4 py-3">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

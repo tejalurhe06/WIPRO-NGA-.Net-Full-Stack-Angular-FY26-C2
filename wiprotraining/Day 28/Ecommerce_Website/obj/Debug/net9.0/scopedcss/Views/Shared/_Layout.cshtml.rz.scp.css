@@ -1,0 +1,77 @@
+/* Navbar brand and links - remove blue focus/hover */
+.navbar a.nav-link:focus[b-kk68zncb1n],
+.navbar a.nav-link:active[b-kk68zncb1n],
+.navbar-brand:focus[b-kk68zncb1n],
+.navbar-brand:active[b-kk68zncb1n] {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Neutral navbar link colors */
+.navbar a.nav-link[b-kk68zncb1n] {
+    color: #333; /* dark gray */
+}
+
+.navbar a.nav-link:hover[b-kk68zncb1n] {
+    color: #555; /* slightly darker on hover */
+    text-decoration: none;
+}
+
+.navbar-brand[b-kk68zncb1n] {
+    color: #333; /* dark brand color */
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+.navbar-brand:hover[b-kk68zncb1n] {
+    color: #555;
+    text-decoration: none;
+}
+
+/* Buttons */
+.btn-primary[b-kk68zncb1n] {
+    color: #fff;
+    background-color: #1b6ec2; /* keep for action buttons */
+    border-color: #1861ac;
+}
+
+/* Nav pills */
+.nav-pills .nav-link.active[b-kk68zncb1n], .nav-pills .show > .nav-link[b-kk68zncb1n] {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+/* Borders */
+.border-top[b-kk68zncb1n] {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom[b-kk68zncb1n] {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+/* Shadow */
+.box-shadow[b-kk68zncb1n] {
+    box-shadow: none; /* remove blueish shadow */
+}
+
+/* Footer */
+.footer[b-kk68zncb1n] {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+}
+
+/* Remove default link color for all <a> */
+a[b-kk68zncb1n] {
+    color: #333; /* neutral */
+    text-decoration: none;
+}
+a:hover[b-kk68zncb1n] {
+    color: #555;
+    text-decoration: none;
+}

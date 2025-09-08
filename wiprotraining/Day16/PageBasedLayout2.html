@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page-Based Layout</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header, footer {
+            background-color: #444;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        nav {
+            background-color: #eee;
+            padding: 1em;
+        }
+
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        aside {
+            width: 20%;
+            background-color: #f4f4f4;
+            padding: 1em;
+        }
+
+        main {
+            width: 80%;
+            padding: 1em;
+        }
+
+        footer {
+            margin-top: 1em;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>My Sample Website</h1>
+    </header>
+
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="container">
+        <aside>
+            <h3>Side Info</h3>
+            <p>This is an aside section.</p>
+        </aside>
+
+        <main>
+            <h2>Welcome!</h2>
+            <p>This is the main content area for this specific page.</p>
+        </main>
+    </div>
+
+    <footer>
+        &copy; 2025 My Sample Website
+    </footer>
+
+</body>
+</html>

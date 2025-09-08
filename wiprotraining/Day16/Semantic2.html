@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Semantic Tags in HTML</title>
+</head>
+<body>
+
+    <header>
+        <h1>Semantic HTML Showcase</h1>
+        <nav>
+            <ul>
+                <li><a href="#welcome">Welcome</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#funfacts">Fun Facts</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="welcome">
+            <h2>Welcome</h2>
+            <p>Learn how to use <mark>semantic HTML</mark> to structure your web pages better.</p>
+            <p>This site was last updated on <time datetime="2025-08-05">August 5, 2025</time>.</p>
+        </section>
+
+        <section id="team">
+            <h2>Meet the Team</h2>
+            <article>
+                <h3>Jane Doe</h3>
+                <figure>
+                    <img src="jane.jpg" alt="Jane's Photo" width="150">
+                    <figcaption>Jane, our lead developer</figcaption>
+                </figure>
+                <p><abbr title="Chief Executive Officer">CEO</abbr> of the company.</p>
+            </article>
+        </section>
+
+        <section id="funfacts">
+            <h2>Fun Facts</h2>
+
+            <article>
+                <h3>Definition Example</h3>
+                <p><dfn>Accessibility</dfn> is the practice of making web content usable for everyone.</p>
+            </article>
+
+            <article>
+                <h3>Quote Example</h3>
+                <blockquote cite="https://www.w3.org/TR/html52/">
+                    "Semantic elements clearly describe their meaning in a human- and machine-readable way."
+                </blockquote>
+                <p>— Source: <cite>W3C HTML5.2 Specification</cite></p>
+            </article>
+
+            <article>
+                <h3>Expandable Tips</h3>
+                <details>
+                    <summary>Click to see HTML tip</summary>
+                    <p>Use semantic tags to improve SEO and accessibility.</p>
+                </details>
+            </article>
+
+            <article>
+                <h3>Progress & Meter</h3>
+                <label for="progress">HTML Learning Progress:</label>
+                <progress id="progress" value="80" max="100">80%</progress>
+
+                <br><br>
+
+                <label for="meter">Site Popularity Score:</label>
+                <meter id="meter" value="0.8" min="0" max="1">80%</meter>
+            </article>
+        </section>
+
+        <aside>
+            <h3>Side Note</h3>
+            <p>Semantic tags make your content more understandable to <mark>screen readers</mark> and search engines.</p>
+        </aside>
+
+    </main>
+
+    <footer>
+        <address>
+            Contact us at:<br>
+            Email: <a href="mailto:info@example.com">info@example.com</a><br>
+            Phone: +91-1234567890<br>
+        </address>
+        <p>&copy; <time datetime="2025">2025</time> Semantic HTML Co.</p>
+    </footer>
+
+</body>
+</html>

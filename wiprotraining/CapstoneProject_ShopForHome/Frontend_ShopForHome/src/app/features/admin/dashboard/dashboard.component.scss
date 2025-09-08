@@ -1,0 +1,26 @@
+// dashboard.component.scss
+.sidebar {
+  position: fixed;
+  top: 56px; /* Height of navbar */
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  padding: 48px 0 0;
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+.sidebar .nav-link {
+  font-weight: 500;
+  color: #333;
+  padding: 0.75rem 1rem;
+}
+
+.sidebar .nav-link.active {
+  color: #007bff;
+  background-color: rgba(0, 123, 255, 0.1);
+}
+
+.main-content {
+  margin-left: 250px; /* Width of sidebar */
+  padding: 20px;
+}

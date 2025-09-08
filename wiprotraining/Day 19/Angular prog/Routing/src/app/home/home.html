@@ -1,0 +1,17 @@
+<h1>Home Page</h1>
+<!-- <a routerLink="profile">Go To Profile Page</a> -->
+<!-- <a [routerLink] = "['profile',{name:'Tejal'}]">Go To Profile Page</a> -->
+
+<!-- //if data passed in route file 
+<button (click)="goToProfile('Peter')">Go To Profile Page</button>
+  <button (click)="goToProfile('Meter')">Go To Profile Page</button> -->
+
+  <a routerLink="profile">Go to Profile</a>
+
+  <h1>User List</h1>
+
+  <ul>
+  @for(let user of users;track user.id){
+    <li><a RouterLink="user/{{user.id}}/{{user.name}}">{{user.name}}</a></li>
+  }
+  </ul>

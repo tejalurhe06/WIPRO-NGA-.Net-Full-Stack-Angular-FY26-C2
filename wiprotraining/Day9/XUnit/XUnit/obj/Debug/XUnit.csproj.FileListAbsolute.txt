@@ -1,0 +1,7 @@
+C:\Users\hp\source\repos\XUnit\XUnit\bin\Debug\XUnit.exe.config
+C:\Users\hp\source\repos\XUnit\XUnit\bin\Debug\XUnit.exe
+C:\Users\hp\source\repos\XUnit\XUnit\bin\Debug\XUnit.pdb
+C:\Users\hp\source\repos\XUnit\XUnit\obj\Debug\XUnit.csproj.AssemblyReference.cache
+C:\Users\hp\source\repos\XUnit\XUnit\obj\Debug\XUnit.csproj.CoreCompileInputs.cache
+C:\Users\hp\source\repos\XUnit\XUnit\obj\Debug\XUnit.exe
+C:\Users\hp\source\repos\XUnit\XUnit\obj\Debug\XUnit.pdb

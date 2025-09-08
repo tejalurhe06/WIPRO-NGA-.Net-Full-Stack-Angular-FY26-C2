@@ -1,0 +1,35 @@
+@model List<OnlineBookstoreMVC.Models.CartItem>
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<h2>Checkout</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Book</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.Price.ToString("C")</td>
+                <td>@item.Quantity</td>
+                <td>@(item.Price * item.Quantity).ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h4>Total Amount: @ViewBag.Total.ToString("C")</h4>
+
+<form asp-action="PlaceOrder" method="post">
+    <button class="btn btn-success" type="submit">Place Order</button>
+    <a class="btn btn-secondary" asp-controller="Cart" asp-action="Index">Back to Cart</a>
+</form>

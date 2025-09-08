@@ -1,0 +1,74 @@
+<div class="container mt-3">
+  <h3>Admin Users</h3>
+
+  <!-- Messages -->
+  <div *ngIf="success" class="alert alert-success">{{ success }}</div>
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <!-- Users Table -->
+  <table class="table table-bordered" *ngIf="!loading">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Name</th>
+        <th>User Type</th>
+        <th>Status</th>
+        <th>Created At</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of users">
+        <td>{{ u.userId }}</td>
+        <td>{{ u.email }}</td>
+        <td>{{ u.firstName }} {{ u.lastName }}</td>
+        <td>{{ u.userType }}</td>
+        <td>
+          <span [class.text-success]="u.isActive" [class.text-danger]="!u.isActive">
+            {{ u.isActive ? "Active" : "Inactive" }}
+          </span>
+        </td>
+        <td>{{ u.createdAt | date: 'short' }}</td>
+        <td>
+          <button class="btn btn-sm btn-outline-primary" (click)="editUser(u)">Edit</button>
+          <button class="btn btn-sm btn-outline-danger" (click)="deactivateUser(u.userId)">
+            Deactivate
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Edit Form -->
+  <div *ngIf="showForm" class="card mt-3 p-3">
+    <h5>Edit User</h5>
+    <form (ngSubmit)="saveUser()">
+      <div class="mb-2">
+        <label>First Name</label>
+        <input type="text" class="form-control" [(ngModel)]="formUser.firstName" name="firstName" />
+      </div>
+      <div class="mb-2">
+        <label>Last Name</label>
+        <input type="text" class="form-control" [(ngModel)]="formUser.lastName" name="lastName" />
+      </div>
+      <div class="mb-2">
+        <label>Email</label>
+        <input type="email" class="form-control" [(ngModel)]="formUser.email" name="email" disabled />
+      </div>
+      <div class="mb-2">
+        <label>User Type</label>
+        <input type="number" class="form-control" [(ngModel)]="formUser.userType" name="userType" />
+      </div>
+      <div class="mb-2">
+        <label>Status</label>
+        <select class="form-control" [(ngModel)]="formUser.isActive" name="isActive">
+          <option [ngValue]="true">Active</option>
+          <option [ngValue]="false">Inactive</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-success btn-sm">Save</button>
+      <button type="button" class="btn btn-secondary btn-sm" (click)="cancel()">Cancel</button>
+    </form>
+  </div>
+</div>
