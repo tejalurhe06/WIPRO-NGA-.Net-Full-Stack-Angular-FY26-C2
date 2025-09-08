@@ -1,0 +1,82 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+  
+}
+@model MVC_CORE.Models.Employe;
+<link rel="stylesheet" href="~/css/details.css" asp-append-version="true" />
+
+@* <h1>Welcome to employee controller</h1> *@
+
+
+<h1>Employee Details</h1>
+
+<h4>Id : @Model.empid</h4>
+<h4>FirstName :@Model.firstname</h4>
+<h4>LastName : @Model.lastname</h4>
+<h4>City : @Model.city</h4>
+
+@* 
+@{
+    <p style="background-color : pink;">Value of i (for loop)</p>
+    for (int i = 0; i < 5; i++)
+    {
+        <p>@i</p>
+    }
+
+    <p style="background-color : pink;">Value of j (while loop)</p>
+    int j = 5;
+    while (j < 10)
+    {
+        <p>@j</p>
+    }
+
+    <p style="background-color : pink;">Value of k (do-while loop)</p>
+    int k = 10;
+    do
+    {
+        <p>@k</p>
+        k++;
+    } while (k < 15);
+
+    <p style="background-color : pink;">Array Example</p>
+    string[] names = { "Tejal", "Kanishka", "Anshu", "Pranjal", "Prachi", "Sayli", "Sakshi" };
+
+    foreach( string name in names)
+    {
+        <li>@name</li>
+    }
+
+    <p style="background-color : pink;">Switch Example</p>
+    
+    string choice = "Pink";
+
+    @switch (choice)
+    {
+        case "Red":
+            <p>You chose Red 🎨</p>
+            break;
+        case "Blue":
+            <p>You chose Blue 🌊</p>
+            break;
+        case "Pink":
+            <p>You chose Pink 🌸</p>
+            break;
+        default:
+            <p>No color selected ❓</p>
+            break;
+    }
+
+    <p style="background-color : pink;">If-Else Example</p>
+    int price = 60000;
+    if(price<=6000)
+    {
+        <h4>You can buy the laptop upto : @price</h4>
+    }
+    else
+    {
+        <h4>Please wait for sometime </h4>
+    } 
+
+ } *@

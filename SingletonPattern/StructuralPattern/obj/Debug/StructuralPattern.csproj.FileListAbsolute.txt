@@ -1,0 +1,7 @@
+C:\Users\hp\source\repos\SingletonPattern\StructuralPattern\bin\Debug\StructuralPattern.exe.config
+C:\Users\hp\source\repos\SingletonPattern\StructuralPattern\bin\Debug\StructuralPattern.exe
+C:\Users\hp\source\repos\SingletonPattern\StructuralPattern\bin\Debug\StructuralPattern.pdb
+C:\Users\hp\source\repos\SingletonPattern\StructuralPattern\obj\Debug\StructuralPattern.csproj.AssemblyReference.cache
+C:\Users\hp\source\repos\SingletonPattern\StructuralPattern\obj\Debug\StructuralPattern.csproj.CoreCompileInputs.cache
+C:\Users\hp\source\repos\SingletonPattern\StructuralPattern\obj\Debug\StructuralPattern.exe
+C:\Users\hp\source\repos\SingletonPattern\StructuralPattern\obj\Debug\StructuralPattern.pdb

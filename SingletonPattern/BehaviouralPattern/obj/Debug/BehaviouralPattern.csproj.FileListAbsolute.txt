@@ -1,0 +1,7 @@
+C:\Users\hp\source\repos\SingletonPattern\BehaviouralPattern\bin\Debug\BehaviouralPattern.exe.config
+C:\Users\hp\source\repos\SingletonPattern\BehaviouralPattern\bin\Debug\BehaviouralPattern.exe
+C:\Users\hp\source\repos\SingletonPattern\BehaviouralPattern\bin\Debug\BehaviouralPattern.pdb
+C:\Users\hp\source\repos\SingletonPattern\BehaviouralPattern\obj\Debug\BehaviouralPattern.csproj.AssemblyReference.cache
+C:\Users\hp\source\repos\SingletonPattern\BehaviouralPattern\obj\Debug\BehaviouralPattern.csproj.CoreCompileInputs.cache
+C:\Users\hp\source\repos\SingletonPattern\BehaviouralPattern\obj\Debug\BehaviouralPattern.exe
+C:\Users\hp\source\repos\SingletonPattern\BehaviouralPattern\obj\Debug\BehaviouralPattern.pdb

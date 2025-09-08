@@ -1,0 +1,63 @@
+﻿@model Employe
+
+<form asp-action="Submit" asp-controller="Wipro" method="post">
+    <div>
+        <label asp-for="Id"></label>
+        <input asp-for="Id" type="number" />
+        <span asp-validation-for="Id" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" type="text" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="City"></label>
+        <select asp-for="City">
+            <option value="">-- Select City --</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Pune">Pune</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Bangalore">Bangalore</option>
+        </select>
+        <span asp-validation-for="City" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Gender"></label>
+        <select asp-for="Gender">
+            <option value="">-- Select Gender --</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+        <span asp-validation-for="Gender" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Qualification"></label>
+        <div>
+            <input type="checkbox" asp-for="Qualification" value="High School" /> High School<br />
+            <input type="checkbox" asp-for="Qualification" value="Bachelor" /> Bachelor<br />
+            <input type="checkbox" asp-for="Qualification" value="Master" /> Master<br />
+            <input type="checkbox" asp-for="Qualification" value="PhD" /> PhD<br />
+        </div>
+        <span asp-validation-for="Qualification" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <button type="submit">Submit</button>
+</form>
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

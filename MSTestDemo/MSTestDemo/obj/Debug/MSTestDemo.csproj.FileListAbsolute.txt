@@ -1,0 +1,8 @@
+C:\Users\hp\source\repos\MSTestDemo\MSTestDemo\bin\Debug\MSTestDemo.exe.config
+C:\Users\hp\source\repos\MSTestDemo\MSTestDemo\bin\Debug\MSTestDemo.exe
+C:\Users\hp\source\repos\MSTestDemo\MSTestDemo\bin\Debug\MSTestDemo.pdb
+C:\Users\hp\source\repos\MSTestDemo\MSTestDemo\obj\Debug\MSTestDemo.csproj.AssemblyReference.cache
+C:\Users\hp\source\repos\MSTestDemo\MSTestDemo\obj\Debug\MSTestDemo.csproj.CoreCompileInputs.cache
+C:\Users\hp\source\repos\MSTestDemo\MSTestDemo\obj\Debug\MSTestDemo.exe
+C:\Users\hp\source\repos\MSTestDemo\MSTestDemo\obj\Debug\MSTestDemo.pdb
+C:\Users\hp\source\repos\MSTestDemo\MSTestDemo\obj\Debug\MSTestDemo.exe.config

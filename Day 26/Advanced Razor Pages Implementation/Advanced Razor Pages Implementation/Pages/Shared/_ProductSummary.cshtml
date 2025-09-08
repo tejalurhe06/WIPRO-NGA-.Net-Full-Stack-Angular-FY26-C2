@@ -1,0 +1,6 @@
+﻿@model Advanced_Razor_Pages_Implementation.Models.Product
+
+<li>
+    <strong>@Model.Name</strong> - @Model.Description
+    <a asp-page="Details" asp-route-id="@Model.ProductID" class="btn btn-link">View Details</a>
+</li>

@@ -1,0 +1,24 @@
+﻿@page "{id:int}"
+@model Advanced_Razor_Pages_Implementation.Pages.Products.DetailsModel
+@{
+}
+
+<h2>Product Details</h2>
+
+@if (Model.Product != null)
+{
+    <h3>@Model.Product.Name</h3>
+    <p>@Model.Product.Description</p>
+
+    <h4>Categories:</h4>
+    <ul>
+        @foreach (var cat in Model.Product.Categories)
+        {
+            <li>@cat.CategoryName</li>
+        }
+    </ul>
+}
+else
+{
+    <p>Product not found.</p>
+}

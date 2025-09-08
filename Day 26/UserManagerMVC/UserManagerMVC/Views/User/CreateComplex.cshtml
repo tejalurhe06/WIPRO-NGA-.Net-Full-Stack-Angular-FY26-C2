@@ -1,0 +1,51 @@
+﻿@model UserManagerMVC.Models.User
+@{
+    ViewData["Title"] = "Complex User Form";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-success">Complex User Form</h2>
+
+    <form asp-action="CreateComplex" method="post" class="border p-4 rounded shadow-sm bg-light">
+        <div class="mb-3">
+            <label asp-for="FirstName" class="form-label"></label>
+            <input asp-for="FirstName" class="form-control" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="LastName" class="form-label"></label>
+            <input asp-for="LastName" class="form-control" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Age" class="form-label"></label>
+            <input asp-for="Age" class="form-control" />
+            <span asp-validation-for="Age" class="text-danger"></span>
+        </div>
+
+        <h4 class="mt-4 text-secondary">Address Details</h4>
+        <div class="mb-3">
+            <label asp-for="Address.Street" class="form-label"></label>
+            <input asp-for="Address.Street" class="form-control" />
+            <span asp-validation-for="Address.Street" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Address.City" class="form-label"></label>
+            <input asp-for="Address.City" class="form-control" />
+            <span asp-validation-for="Address.City" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Address.ZipCode" class="form-label"></label>
+            <input asp-for="Address.ZipCode" class="form-control" />
+            <span asp-validation-for="Address.ZipCode" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

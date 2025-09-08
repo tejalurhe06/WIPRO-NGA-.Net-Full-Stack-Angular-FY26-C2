@@ -1,0 +1,107 @@
+﻿@page
+@model Core_Web_Razor_Demo.Pages.ContactUsModel
+@{
+}
+
+<h3>Email - tejalurhe056@gmail.com</h3>
+<h3>Contact No - 8767917255</h3>
+<h3>Address - Rahuri,Ahilyanagar 413706</h3>
+
+<h4>Inline expression Demo</h4>
+<h2>@DateTime.Now.ToShortDateString()</h2>
+
+<h4>Multiline Expression Demo</h4>
+@{
+	var date = DateTime.Now.ToShortDateString();
+	var msg = "Hello, How are you !!";
+}
+
+<h1>Todays date is : @date</h1>
+<h1>@msg</h1>
+
+<h2>Display through code block</h2>
+@{
+	var date1 = DateTime.Now.ToShortDateString();
+	var msg1 = "Hello, How are you !!";
+	@:Todays date is : @date1
+	<br/>
+	@msg1
+}
+
+<h2>Display through code block using Text Tag</h2>
+@{
+	var date2 = DateTime.Now.ToShortDateString();
+	var msg2 = "Hello, How are you !!";
+	<text>Todays date is : </text> @date2
+	<br />
+	@msg2
+}
+
+<h2>if else , switch, loops</h2>
+@{
+	int x = 10;
+	if(x==10)
+	{
+		<h1>The value of x is 10</h1>
+	}
+	else
+	{
+		<h1>The value of x is not 10</h1>
+	}
+}
+	<h1>Switch Demo</h1>
+	@{
+	
+	int day = 1;
+
+	switch(day)
+	{
+		case 1 :
+			<h1>Today is monday</h1>
+			break;
+
+		case 2:
+			<h1>Today is Tuesday</h1>
+			break;
+
+		case 3:
+			<h1>Today is Wednesday</h1>
+			break;
+
+		default:
+			<h1>Today is not mon,tue,wed</h1>
+			break;
+
+	}
+	}
+
+	<h1>For Demo</h1>
+	@{
+	for(int i=0;i<=5;i++)
+	{
+		<h2>@i \t</h2>
+	}
+	}
+
+
+	<h1>While Demo</h1>
+	@{
+	int j = 2;
+	while(j<=2)
+	{
+		<h4>Wipro@j</h4>
+	}
+	}
+
+
+	<h1>Array Demo</h1>
+	@{
+		string[] names = { "Tejal", "Kanishka", "Anshu", "Pramjal" };
+		<h2>Name list</h2>
+		<ul>
+		@foreach(var name in names)
+			{
+				<li>@name</li>
+			}
+		</ul>
+     }

@@ -1,0 +1,15 @@
+﻿@page
+@model Assignment2_Implementing_Razorpages_with_Pagemodel.Pages.AddItemModel
+@{
+}
+
+
+<h2>Add Item</h2>
+
+<form method="post">
+    <label>Item Name:</label>
+    <input type="text" asp-for="Name" />
+    <button type="submit">Add</button>
+</form>
+
+<a href="/ItemList">Back to List</a>

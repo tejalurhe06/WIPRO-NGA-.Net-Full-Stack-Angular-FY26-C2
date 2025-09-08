@@ -1,0 +1,16 @@
+﻿@page
+@model Assignment2_Implementing_Razorpages_with_Pagemodel.Pages.ItemListModel
+@{
+}
+
+
+<h4>Item List</h4>
+
+<ul>
+    @foreach (var item in ItemListModel.Items)
+    {
+        <li>@item.Name</li>
+    }
+</ul>
+
+<a href="/AddItem">Add New Item</a>

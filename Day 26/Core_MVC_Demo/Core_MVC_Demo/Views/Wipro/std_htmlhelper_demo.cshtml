@@ -1,0 +1,18 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<form>
+    Enter username  :@Html.TextBox("username")
+    Enter Password :@Html.Password("password")
+    Select Issubscribed  :@Html.CheckBox("Issubscribed")
+    Comments :@Html.TextArea("Comments")
+
+    Select gender
+    @Html.DropDownList("Gender",new List<SelectListItem>{
+        new SelectListItem{Text = "Male" , Value="M"},
+        new SelectListItem{Text = "Female" , Value="F"}
+    })
+</form>

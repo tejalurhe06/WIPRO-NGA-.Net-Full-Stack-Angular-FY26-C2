@@ -1,0 +1,24 @@
+﻿@page
+@model Core_Web_Razor_Demo.Pages.EmpPageModel
+@{
+}
+
+<form method="post">
+    <label asp-for="id"></label>
+    <input asp-for="id" />
+    <br />
+
+    <label asp-for="name"></label>
+    <input asp-for="name" />
+    <br />
+
+    <label asp-for="phone"></label>
+    <textarea asp-for="phone"></textarea>
+    <br />
+
+    <label asp-for="message"></label>
+    <textarea asp-for="message"></textarea>
+    <br />
+
+    <button type="submit">Send</button>
+</form>

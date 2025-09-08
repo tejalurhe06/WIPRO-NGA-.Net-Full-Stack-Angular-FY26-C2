@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Simple User Display";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-primary">User Details (Simple)</h2>
+
+    <div class="border p-4 rounded shadow-sm bg-light">
+        <p class="mb-2"><strong>First Name:</strong> @ViewBag.FirstName</p>
+        <p class="mb-2"><strong>Last Name:</strong> @ViewBag.LastName</p>
+        <p class="mb-2"><strong>Age:</strong> @ViewBag.Age</p>
+    </div>
+
+    <a href="/User/CreateSimple" class="btn btn-primary mt-3">Go Back</a>
+</div>

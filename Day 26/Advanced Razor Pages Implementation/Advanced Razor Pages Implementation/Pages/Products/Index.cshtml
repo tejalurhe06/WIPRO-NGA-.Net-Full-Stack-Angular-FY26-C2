@@ -1,0 +1,24 @@
+﻿@page
+@model Advanced_Razor_Pages_Implementation.Pages.Products.IndexModel
+@{
+}
+
+<h2>Product List</h2>
+
+<a asp-page="Create" class="btn btn-primary">Add New Product</a>
+
+<hr />
+
+@if (Model.Products.Count == 0)
+{
+    <p>No products available.</p>
+}
+else
+{
+    <ul>
+        @foreach (var product in Model.Products)
+        {
+            <partial name="_ProductSummary" model="product" />
+        }
+    </ul>
+}

@@ -1,0 +1,22 @@
+﻿@model UserManagerMVC.Models.User
+@{
+    ViewData["Title"] = "Complex User Display";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-success">User Details (Complex)</h2>
+
+    <div class="border p-4 rounded shadow-sm bg-light">
+        <h5 class="text-primary">Personal Info</h5>
+        <p class="mb-2"><strong>First Name:</strong> @Model.FirstName</p>
+        <p class="mb-2"><strong>Last Name:</strong> @Model.LastName</p>
+        <p class="mb-2"><strong>Age:</strong> @Model.Age</p>
+
+        <h5 class="text-secondary mt-4">Address Info</h5>
+        <p class="mb-2"><strong>Street:</strong> @Model.Address.Street</p>
+        <p class="mb-2"><strong>City:</strong> @Model.Address.City</p>
+        <p class="mb-2"><strong>Zip Code:</strong> @Model.Address.ZipCode</p>
+    </div>
+
+    <a href="/User/CreateComplex" class="btn btn-success mt-3">Go Back</a>
+</div>

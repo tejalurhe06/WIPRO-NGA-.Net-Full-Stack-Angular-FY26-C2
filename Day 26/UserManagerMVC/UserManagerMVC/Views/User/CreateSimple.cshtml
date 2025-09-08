@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Simple User Form";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-primary">Simple User Form</h2>
+
+    <form asp-action="CreateSimple" method="post" class="border p-4 rounded shadow-sm bg-light">
+        <div class="mb-3">
+            <label class="form-label">First Name:</label>
+            <input type="text" name="FirstName" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Last Name:</label>
+            <input type="text" name="LastName" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Age:</label>
+            <input type="number" name="Age" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
