@@ -1,0 +1,55 @@
+<div class="task-list">
+  <h2>Task List</h2>
+  
+  <div *ngIf="tasks().length === 0" class="empty-state">
+    No tasks found. Add a new task to get started!
+  </div>
+  
+  <div *ngFor="let task of tasks()" class="task-item" [class.completed]="task.status === 'completed'">
+    
+    <!-- Edit Mode -->
+    <div *ngIf="editingTaskId === task.id" class="edit-container">
+      <app-edit-task 
+        [task]="task"
+        (taskUpdated)="onUpdateTask($event)"
+        (cancelEdit)="onCancelEdit()">
+      </app-edit-task>
+    </div>
+    
+    <!-- View Mode -->
+    <div *ngIf="editingTaskId !== task.id" class="task-content">
+      <div class="task-header">
+        <h3>{{ task.title }}</h3>
+        <span class="task-status" [class.status-completed]="task.status === 'completed'">
+          {{ task.status }}
+        </span>
+      </div>
+      
+      <p>{{ task.description }}</p>
+      
+      <div class="task-meta">
+        <span class="date-info" *ngIf="task.createdAt">
+          Created: {{ formatDate(task.createdAt) }}
+        </span>
+        <span class="date-info" *ngIf="task.updatedAt && task.updatedAt !== task.createdAt">
+          • Updated: {{ formatDate(task.updatedAt) }}
+        </span>
+      </div>
+      
+      <div class="task-actions">
+        <button 
+          (click)="onEditTask(task)" 
+          class="btn-edit"
+          aria-label="Edit task">
+          Edit
+        </button>
+        <button 
+          (click)="onDeleteTask(task.id!)" 
+          class="btn-danger"
+          aria-label="Delete task">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
